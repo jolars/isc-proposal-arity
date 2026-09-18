@@ -8,6 +8,9 @@ This repository contains the proposal for the
 
 ## License
 
+This proposal is based on the [ISC
+Boilerplate](https://github.com/RConsortium/isc-proposal).
+
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">ISC Boilerplate</span>
 by
 <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/stephlocke" property="cc:attributionName" rel="cc:attributionURL">Stephanie

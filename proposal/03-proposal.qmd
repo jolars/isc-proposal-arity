@@ -1,50 +1,94 @@
-# The proposal
-<!--
-How are you going to solve the problem? Include the concrete actions you
-will take and an estimated timeline. What are likely failure modes and
-how will you recover from them?
-
-This is where the proposal should be outlined.
--->
+# The Proposal
 
 ## Overview
-<!--
-At a high-level address what your proposal is and how it will address
-the problem identified. Highlight any benefits to the R Community that
-follow from solving the problem. This should be your most compelling
-section.
 
-Include concrete actions you will take and estimated timeline.
--->
+I will improve Arity's analysis of package code, extend its metadata for
+dependencies, and test these changes together in complete editing workflows.
 
 ## Detail
-<!--
-Go into more detail about the specifics of the project and how it delivers
-against the problem.
-
-Depending on project type the detail section should include:
--->
 
 ### Minimum Viable Product
 
-<!--
-What is the smallest thing you can build that delivers value to your users?
--->
+1. **Language-server reliability.** I will improve Arity's handling of shared
+   and inherited roxygen documentation. References, renaming, and call hierarchy
+   will handle quoted function names consistently. Renaming will produce valid R
+   syntax, including in infix calls, or Arity will refuse the operation.
+
+2. **Package knowledge for editor assistance.** I will publish versioned indexes
+   for at least 100 CRAN packages meeting the quality criteria below. These will
+   include packages outside the existing bundle and dependencies used in the
+   evaluation workflows. The indexes will contain exported names, symbol kinds,
+   recoverable function arguments and defaults, and help. Arity will use these
+   indexes to provide completion, hover information, and signature help without
+   requiring local package installation.
+
+   I will document the schema, automate weekly updates, and add a prefetch
+   command for downloading indexes in bulk. The editor and CLI will use the same
+   cached metadata and work with downloads disabled. Network access will remain
+   an explicit user choice. Each index will record the package version and how
+   the metadata was extracted.
+
+3. **Validation and adoption.** I will test complete editing workflows on ten
+   packages with cross-file references, imports, shared documentation, and
+   nonstandard evaluation. These tests will also compare diagnostics from the
+   editor and CLI. I will update the guides for VS Code, Positron, Neovim, and
+   continuous integration (CI), explaining how to use Arity alongside other R
+   tools and how to work offline.
+
+Each behavior change will have regression tests and tests for cases that should
+remain unchanged. I will build on Arity's existing corpus checks, protocol
+tests, and benchmarks.
 
 ### Architecture
 
-<!--
-What does the high-level architecture look like?
--->
+Arity analyzes code across a project and updates its analysis as files change.
+Its architecture for parsing, formatting, and language intelligence is inspired
+by [rust-analyzer](https://rust-analyzer.github.io/). The separately published
+[`arity-parser`](https://crates.io/crates/arity-parser) and
+[`arity-formatter`](https://crates.io/crates/arity-formatter) libraries are
+already used by [`mini-roxygen-core`](https://github.com/eitsupi/mini-roxygen),
+which generates R documentation and NAMESPACE files from roxygen comments.
+
+Arity's metadata harvester already reads serialized R objects and
+installed-package help without running R. Its binary parsing and Rd decoding
+overlap with
+[r-documentation-rs](https://github.com/eitsupi/r-documentation-rs). I will
+coordinate with its maintainer to consolidate these readers in
+r-documentation-rs, reducing duplication and making improvements available to
+other R tools. Arity will continue to handle package discovery, export
+resolution, metadata indexing, caching, and editor integration.
+
+As of September 2026, Arity bundles export names for over 500 packages and has a
+workflow to refresh them weekly. The remote client already supports downloads,
+disk caching, and versioned indexes, but accepts only exported names. I will add
+a pipeline to publish richer indexes, extend the client to supply signatures and
+help, and make cached exports available to the CLI. Local indexes will take
+precedence, and Arity will show the package version when it uses a remote index.
 
 ### Assumptions
 
-<!--
-What assumptions are you making that, if proven false, would invalidate the project?
--->
+Static analysis cannot determine what every name refers to at runtime. Arity
+will refuse uncertain rewrites, and I will document unsupported cases. Remote
+indexes describe current releases, which may differ from the versions a project
+uses.
 
-### External dependencies
+The main risks are incorrect or incomplete metadata, confusion between package
+versions, and errors when renaming quoted function names. I will record missing
+fields and failed extractions, and older metadata will retain the version of the
+package it describes. I will keep the work within budget by selecting packages
+and using existing infrastructure. Historical package versions and signatures
+that require running R are outside the scope of this project.
 
-<!--
-What external dependencies does the project have (e.g. libraries, services, other projects, etc.)?
--->
+### External Dependencies
+
+For the pilot, I will extract metadata from unpacked [R-universe binary
+packages](https://docs.r-universe.dev/install/binaries.html), falling back on
+packages installed in CI when needed. I will check the complete export lists and
+samples of signatures and help against the same package versions in R, and use
+roxygen2 to check documentation behavior. These checks will use R, but users
+will not need a running R session or installed dependencies to use the resulting
+metadata. The source packages and extracted data will retain their version and
+license information.
+
+I am responsible for delivering the project, and the budget does not assume
+development time from other maintainers. The work does not require changes to R.

@@ -1,24 +1,32 @@
----
-bibliography: references.bib
----
-
 # The Problem
 
-```{=html}
-<!--
-Outlining the issue / weak point / problem to be solved by this
-proposal. This should be a compelling section that sets the reader up
-for the next section - the proposed solution!
+Package authors need to follow references across files, check imported
+functions, and keep documentation consistent with their code. Language servers
+help with these tasks through completion, hover information, signature help,
+navigation, symbol renaming, and call hierarchy. These features help developers
+catch errors while editing and make changes across a package.
 
-It is important to cover:
+There are currently three language servers for R:
+[languageserver](https://github.com/REditorSupport/languageserver),
+[Ark](https://github.com/posit-dev/ark), and Arity. languageserver is a mature R
+package that runs in an R session and supports many editors. Ark is a newer tool
+from Posit, written in Rust and built around its own R kernel and Positron.
+Arity is faster and uses less memory than languageserver, and it does not
+require Positron to run.
 
- - [ ] What the problem is
- - [ ] Who it affects
- - [ ] Why is it a problem
- - [ ] What will solving the problem enable (why should it be solved)
- - [ ] Brief summary of existing work and previous attempts (e.g., relevant R packages)
- - [ ] If proposing changes to R itself: letter of support from R Core member
--->
-```
+Arity still has limitations that affect package development. It can misinterpret
+shared roxygen documentation, miss undocumented parameters, and handle
+references and call hierarchy inconsistently. Renaming can also produce invalid
+R syntax, for example when a function is used as an infix operator.
 
-An example in-text citation [@wickham2016].
+Arity also needs better support for dependencies that are not installed locally.
+It already provides function signatures and help for installed packages, but for
+other packages it has access only to exported names. Developers therefore need
+to install their dependencies to get signatures and help in the editor. Richer
+metadata would remove this requirement. The editor and command-line interface
+(CLI) also need to use the same cached metadata when downloads are disabled.
+
+These improvements will help package authors and contributors catch errors
+before they reach users. Publishing the metadata separately will also let other
+R tools use it, while the tests and reported limitations will help their
+developers evaluate similar behavior.

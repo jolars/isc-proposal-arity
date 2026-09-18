@@ -1,13 +1,15 @@
 ---
-title: "Proposal Title"
+title: "Arity: A Standalone Language Server for R Package Development"
+subtitle: "R Consortium ISC proposal"
 author:
-  - name: Annie Easley
-    orcid: 5555-5555-5555-5555
+  - name: Johan Larsson
+    orcid: 0000-0002-4029-5945
     affiliations:
-      - "Lewis Research Center, National Aeronautics and Space Administration"
+      - "Department of Mathematical Sciences, University of Copenhagen"
 
-date: today
+date: 2026-09-18
 date-format: iso
+tbl-colwidths: [19, 18, 43, 8, 12]
 format:
   html:
     embed-resources: true
@@ -17,9 +19,6 @@ format:
       - right=1.25in
 bibliography: references.bib
 ---
-
-_This template was last revised on 2026-03-24._
-
 
 {{< include proposal/00-exec-summary.qmd >}}
 

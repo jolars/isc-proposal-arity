@@ -1,6 +1,6 @@
 # ISC Proposal for Arity
 
-[![build-status](https://github.com/YOUR-USERNAME/YOUR-REPOSITORY/actions/workflows/publish-proposal.yaml/badge.svg)](https://github.com/YOUR-USERNAME/YOUR-REPOSITORY/actions/workflows/publish-proposal.yaml)
+[![build-status](https://github.com/jolars/isc-proposal-arity/actions/workflows/publish-proposal.yaml/badge.svg)](https://github.com/jolars/isc-proposal-arity/actions/workflows/publish-proposal.yaml)
 
 This repository contains the proposal for the
 [ISC](https://r-consortium.org/all-projects/callforproposals.html) project for

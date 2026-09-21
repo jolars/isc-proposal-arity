@@ -2283,7 +2283,7 @@ vertical-align: -.125em;
 <h1>Project Plan</h1>
 <section id="start-up-phase" class="level2">
 <h2 class="anchored" data-anchor-id="start-up-phase">Start-Up Phase</h2>
-<p>The first milestone (M1) will begin in January 2027. I will pin versions of ten evaluation packages, define their editing workflows, and record baseline diagnostics and response times. I will reproduce the analysis problems described above and document the setup so that I can compare the final results with this baseline. Existing reproductions from <code>future</code> provide a starting point.</p>
+<p>The first milestone (M1) is scheduled to begin in December 2026, following completion of the grant agreement. I will pin versions of ten evaluation packages, define their editing workflows, and record baseline diagnostics and response times. I will reproduce the analysis problems described above and document the setup so that I can compare the final results with this baseline. Existing reproductions from <code>future</code> provide a starting point.</p>
 <p>Initial extraction checks in September 2026 found the required fields for every exported function in glue, withr, R6, and cli. For magrittr, coverage was 16 of 42 functions, largely because primitive aliases lack formal arguments. The checks also found S3 methods incorrectly listed as exports. The metadata pilot will build on these results. It will use glue, withr, R6, and cli, along with tinytable to test a package outside the existing bundle. I will also use magrittr to test incomplete indexes. I will fix the S3 export errors during M1, before publication.</p>
 <p>During M1, I will identify the overlapping code, missing APIs, and tests needed to consolidate the readers in r-documentation-rs. I will use the pilot packages to compare arguments, defaults, and help with results from both the existing extractor and R, and estimate the work for M2. If full consolidation would exceed the available hours, I will retain the parts of Arity’s extractor needed to complete the project and defer the remaining consolidation work.</p>
 <p>Before implementation begins in M2, five pilot packages must pass the quality criteria below. Arity must also provide signatures and help without local installation for packages both inside and outside the existing bundle. I will estimate the cost of weekly updates. If the pilot cannot meet these requirements within budget, I will agree on a reduced scope with the ISC, giving priority to the metadata features and offline access.</p>
@@ -2310,21 +2310,21 @@ vertical-align: -.125em;
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">M1: Baseline and pilot</td>
-<td style="text-align: left;">January 31, 2027</td>
+<td style="text-align: left;">December 31, 2026</td>
 <td style="text-align: left;">Baseline, metadata prototype, consolidation plan, quality checks, regression cases</td>
 <td style="text-align: right;">30</td>
 <td style="text-align: right;">2,400</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">M2: Implementation</td>
-<td style="text-align: left;">February 28, 2027</td>
+<td style="text-align: left;">January 31, 2027</td>
 <td style="text-align: left;">Reliability fixes, rich metadata publication and integration, prefetch, shared offline cache</td>
 <td style="text-align: right;">65</td>
 <td style="text-align: right;">5,200</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">M3: Validation and release</td>
-<td style="text-align: left;">March 31, 2027</td>
+<td style="text-align: left;">February 28, 2027</td>
 <td style="text-align: left;">Workflow validation, annotated comparison, guides, release, report, maintenance instructions</td>
 <td style="text-align: right;">30</td>
 <td style="text-align: right;">2,400</td>
@@ -2338,7 +2338,7 @@ vertical-align: -.125em;
 </tr>
 </tbody>
 </table>
-<p>M1 includes planning and estimating the consolidation work. Changes to the shared readers and their integration into Arity must fit within M2’s 65 hours. The estimates include regression tests, with eight hours in M2 set aside for unexpected work. The schedule assumes a January start after agreement. The ISC and I will agree on any changes to the dates before work begins. I will track progress and completion criteria in public GitHub issues.</p>
+<p>M1 includes planning and estimating the consolidation work. Changes to the shared readers and their integration into Arity must fit within M2’s 65 hours. The estimates include regression tests, with eight hours in M2 set aside for unexpected work. The project is scheduled to run from December 2026 through February 2027. If the grant agreement is delayed, I will agree on revised milestone dates with the ISC before work begins. I will track progress and completion criteria in public GitHub issues.</p>
 </section>
 <section id="other-aspects" class="level2">
 <h2 class="anchored" data-anchor-id="other-aspects">Other Aspects</h2>

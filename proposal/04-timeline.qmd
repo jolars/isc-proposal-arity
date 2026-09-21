@@ -2,11 +2,12 @@
 
 ## Start-Up Phase
 
-The first milestone (M1) will begin in January 2027. I will pin versions of ten
-evaluation packages, define their editing workflows, and record baseline
-diagnostics and response times. I will reproduce the analysis problems described
-above and document the setup so that I can compare the final results with this
-baseline. Existing reproductions from `future` provide a starting point.
+The first milestone (M1) is scheduled to begin in December 2026, following
+completion of the grant agreement. I will pin versions of ten evaluation
+packages, define their editing workflows, and record baseline diagnostics and
+response times. I will reproduce the analysis problems described above and
+document the setup so that I can compare the final results with this baseline.
+Existing reproductions from `future` provide a starting point.
 
 Initial extraction checks in September 2026 found the required fields for every
 exported function in glue, withr, R6, and cli. For magrittr, coverage was 16 of
@@ -35,17 +36,18 @@ the metadata features and offline access.
 
   | Milestone                  | Target date       | Deliverables                                                                                 | Hours   | Cost (USD) |
   | :------------------------- | :---------------- | :---------------------------------------------------------------------------------------     | ------: | ---------: |
-  | M1: Baseline and pilot     | January 31, 2027  | Baseline, metadata prototype, consolidation plan, quality checks, regression cases           |      30 |      2,400 |
-  | M2: Implementation         | February 28, 2027 | Reliability fixes, rich metadata publication and integration, prefetch, shared offline cache |      65 |      5,200 |
-  | M3: Validation and release | March 31, 2027    | Workflow validation, annotated comparison, guides, release, report, maintenance instructions |      30 |      2,400 |
+  | M1: Baseline and pilot     | December 31, 2026 | Baseline, metadata prototype, consolidation plan, quality checks, regression cases           |      30 |      2,400 |
+  | M2: Implementation         | January 31, 2027  | Reliability fixes, rich metadata publication and integration, prefetch, shared offline cache |      65 |      5,200 |
+  | M3: Validation and release | February 28, 2027 | Workflow validation, annotated comparison, guides, release, report, maintenance instructions |      30 |      2,400 |
   | **Total**                  |                   |                                                                                              | **125** | **10,000** |
 
 M1 includes planning and estimating the consolidation work. Changes to the
 shared readers and their integration into Arity must fit within M2's 65 hours.
 The estimates include regression tests, with eight hours in M2 set aside for
-unexpected work. The schedule assumes a January start after agreement. The ISC
-and I will agree on any changes to the dates before work begins. I will track
-progress and completion criteria in public GitHub issues.
+unexpected work. The project is scheduled to run from December 2026 through
+February 2027. If the grant agreement is delayed, I will agree on revised
+milestone dates with the ISC before work begins. I will track progress and
+completion criteria in public GitHub issues.
 
 ## Other Aspects
 

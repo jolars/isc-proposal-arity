@@ -6,13 +6,14 @@ help with these tasks through completion, hover information, signature help,
 navigation, symbol renaming, and call hierarchy. These features help developers
 catch errors while editing and make changes across a package.
 
-There are currently three language servers for R:
+There are three language servers for R:
 [languageserver](https://github.com/REditorSupport/languageserver),
 [Ark](https://github.com/posit-dev/ark), and Arity. languageserver is a mature R
-package that runs in an R session and supports many editors. Ark is a newer tool
-from Posit, written in Rust and built around its own R kernel and Positron.
-Arity is faster and uses less memory than languageserver, and it does not
-require Positron to run.
+package that runs in an R session. Ark embeds its language server in an R kernel
+and powers R support in Positron. Arity, meanwhile, is a standalone language
+server that works without an R session or Jupyter kernel. Adapting Ark to
+Arity's design would have required extracting the server and replacing its
+dependencies on the R runtime, which is what motivated the development of Arity.
 
 Arity still has limitations that affect package development. It can misinterpret
 shared roxygen documentation, miss undocumented parameters, and handle

@@ -6,6 +6,8 @@ This repository contains the proposal for the
 [ISC](https://r-consortium.org/all-projects/callforproposals.html) project for
 [Arity](https://arity.cc).
 
+Please feel free to submit issues or pull requests to improve the proposal!
+
 ## License
 
 This proposal is based on the [ISC

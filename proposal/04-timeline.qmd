@@ -110,8 +110,9 @@ I intend to receive the grant personally. The requested USD 10,000 will fund 125
 hours of my time at USD 80 per hour. The budget assumes no other funding or
 contributors.
 
-With partial funding, I would publish at least 50 indexes meeting the same
-quality criteria and evaluate five packages. This would still include the
-metadata features and offline support described above, plus safe infix renaming.
+With partial funding, I would publish indexes for at least 50 CRAN packages
+meeting the same quality criteria and evaluate five packages. This would still
+include the metadata features and offline support described above, plus safe
+infix renaming.
 I would defer the other reliability fixes and agree on the hours, funding, and
 dates with the ISC before accepting partial funding.

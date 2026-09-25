@@ -24,11 +24,11 @@ Language-server reliability
 
 Package knowledge
 
-:   At least 100 versioned indexes are published, with a documented schema and
-    working weekly updates. For a package to count toward the target, its index
-    must include arguments, defaults, and help for at least 80% of its exported
-    functions. Export lists must match R's results for the same versions.
-    Sampled arguments, defaults, and help must match or be withheld, and missing
+:   Indexes for at least 100 CRAN packages are published, with a documented schema
+    and weekly updates. Export lists must match R's results for the same versions.
+    Sampled arguments, defaults, and help must match or be withheld. After
+    withholding incorrect or uncertain fields, each qualifying index must provide
+    arguments, defaults, and help for at least 80% of exported functions. Missing
     fields will be reported.
 
     Tests show completion details, hover information, and signature help without

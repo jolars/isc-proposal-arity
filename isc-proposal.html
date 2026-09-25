@@ -2217,65 +2217,136 @@ vertical-align: -.125em;
 
 <section id="executive-summary" class="level1">
 <h1>Executive Summary</h1>
+<!--
+This section provides a condensed view of the entire proposal, one page long.
+It should be a comprehensive high-level overview that captures the essence of the proposal, including its goals, methods, expected outcomes, deliverables, and budget.
+-->
 <p>R package development involves working across source files, dependencies, and documentation. I created <a href="https://arity.cc">Arity</a> to help developers navigate and check this code from their editor without running R. Arity is an MIT-licensed language server written in Rust, with an integrated formatter and linter. It supports VS Code, Positron, Neovim, Zed, and other editors through the Language Server Protocol (LSP).</p>
 <p>This project will improve Arity’s handling of shared documentation and function names, and provide function signatures and help for packages that are not installed locally. I will test these improvements in complete editing workflows and publish the results. I ask for USD 10,000 to fund 125 hours of labor.</p>
 </section>
 <section id="signatories" class="level1">
 <h1>Signatories</h1>
+<!--
+This section provides the ISC with a view of the support received from
+the community for a proposal. Acceptance isn't predicated on
+popularity but community acceptance is important. Willingness to
+accept outside input is also a good marker for project delivery.
+
+An optional section would be for R-Core signatories where changes to R
+are proposed.
+-->
 <section id="project-team" class="level2">
 <h2 class="anchored" data-anchor-id="project-team">Project team</h2>
+<!--
+Who are the people responsible for actually delivering the project if
+the proposal gets accepted and are already signed up and rearing to
+go? Briefly describe all participants and the skills they will bring
+to the project. Include public artifacts such as code repositories to
+show their tack record.
+-->
 <p>I am Johan Larsson, Arity’s maintainer and a postdoctoral researcher in statistics and machine learning at the University of Copenhagen’s Department of Mathematical Sciences. I also develop and maintain several R packages, including <a href="https://github.com/jolars/eulerr">eulerr</a>, <a href="https://github.com/jolars/SLOPE">SLOPE</a>, and <a href="https://github.com/jolars/qualpalr">qualpalr</a>.</p>
 </section>
 <section id="contributors" class="level2">
 <h2 class="anchored" data-anchor-id="contributors">Contributors</h2>
-<p>I will carry out the work myself. The budget does not include development time from other contributors.</p>
+<!--
+Who are the people who have actively helped with this proposal but
+won't necessarily be on the core project team later?
+-->
+<p>I will carry out the work myself.</p>
 </section>
 <section id="consulted" class="level2">
 <h2 class="anchored" data-anchor-id="consulted">Consulted</h2>
-<p>I’m grateful for feedback from Tatsuya Shima (maintainer of <a href="https://github.com/eitsupi/arf">arf</a>, <a href="https://github.com/eitsupi/rd2qmd">rd2qmd</a>, <a href="https://github.com/eitsupi/r-documentation-rs">r-documentation-rs</a>, and <a href="https://github.com/eitsupi/mini-roxygen">mini-roxygen</a>), whose suggestions helped clarify and improve the proposal.</p>
+<!--
+Who has been given the opportunity to provide feedback on the
+proposal?
+-->
+<p>The proposal draft was published in a <a href="https://github.com/jolars/isc-proposal-arity">public GitHub repository</a> and I invited user feedback through social media and the issue tracker for Arity.</p>
+<p>I’m grateful for feedback from Jan Hartman and Tatsuya Shima (maintainer of <a href="https://github.com/eitsupi/arf">arf</a>, <a href="https://github.com/eitsupi/r-documentation-rs">r-documentation-rs</a>, and <a href="https://github.com/eitsupi/mini-roxygen">mini-roxygen</a>), whose suggestions helped clarify and improve the proposal.</p>
 </section>
 </section>
 <section id="the-problem" class="level1">
 <h1>The Problem</h1>
-<p>Package authors need to follow references across files, check imported functions, and keep documentation consistent with their code. Language servers help with these tasks through completion, hover information, signature help, navigation, symbol renaming, and call hierarchy. These features help developers catch errors while editing and make changes across a package.</p>
+<!--
+Outlining the issue / weak point / problem to be solved by this
+proposal. This should be a compelling section that sets the reader up
+for the next section - the proposed solution!
+
+It is important to cover:
+
+ - [ ] What the problem is
+ - [ ] Who it affects
+ - [ ] Why is it a problem
+ - [ ] What will solving the problem enable (why should it be solved)
+ - [ ] Brief summary of existing work and previous attempts (e.g., relevant R packages)
+ - [ ] If proposing changes to R itself: letter of support from R Core member
+-->
 <p>There are three language servers for R: <a href="https://github.com/REditorSupport/languageserver">languageserver</a>, <a href="https://github.com/posit-dev/ark">Ark</a>, and Arity. languageserver is a mature R package that runs in an R session. Ark embeds its language server in an R kernel and powers R support in Positron. Arity, meanwhile, is a standalone language server that works without an R session or Jupyter kernel. Adapting Ark to Arity’s design would have required extracting the server and replacing its dependencies on the R runtime, which is what motivated the development of Arity.</p>
 <p>Arity still has limitations that affect package development. It can misinterpret shared roxygen documentation, miss undocumented parameters, and handle references and call hierarchy inconsistently. Renaming can also produce invalid R syntax, for example when a function is used as an infix operator.</p>
-<p>Arity also needs better support for dependencies that are not installed locally. It already provides function signatures and help for installed packages, but for other packages it has access only to exported names. Developers therefore need to install their dependencies to get signatures and help in the editor. Richer metadata would remove this requirement. The editor and command-line interface (CLI) also need to use the same cached metadata when downloads are disabled.</p>
-<p>These improvements will help package authors and contributors catch errors before they reach users. Publishing the metadata separately will also let other R tools use it, while the tests and reported limitations will help their developers evaluate similar behavior.</p>
+<p>Arity also needs better support for dependencies that are not installed locally. It provides signatures and help for installed packages, but only exported names for others. Richer metadata would provide that assistance without installation and enable linting of deprecated and defunct functions. The editor and command-line interface (CLI) also need to share cached metadata when downloads are disabled.</p>
 </section>
 <section id="the-proposal" class="level1">
 <h1>The Proposal</h1>
+<!--
+How are you going to solve the problem? Include the concrete actions you
+will take and an estimated timeline. What are likely failure modes and
+how will you recover from them?
+
+This is where the proposal should be outlined.
+-->
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<!--
+At a high-level address what your proposal is and how it will address
+the problem identified. Highlight any benefits to the R Community that
+follow from solving the problem. This should be your most compelling
+section.
+
+Include concrete actions you will take and estimated timeline.
+-->
 <p>I will improve Arity’s analysis of package code, extend its metadata for dependencies, and test these changes together in complete editing workflows.</p>
 </section>
 <section id="detail" class="level2">
 <h2 class="anchored" data-anchor-id="detail">Detail</h2>
+<!--
+Go into more detail about the specifics of the project and how it delivers
+against the problem.
+
+Depending on project type the detail section should include:
+-->
 <section id="minimum-viable-product" class="level3">
 <h3 class="anchored" data-anchor-id="minimum-viable-product">Minimum Viable Product</h3>
+<!--
+What is the smallest thing you can build that delivers value to your users?
+-->
 <ol type="1">
 <li><p><strong>Language-server reliability.</strong> I will improve Arity’s handling of shared and inherited roxygen documentation. References, renaming, and call hierarchy will handle quoted function names consistently. Renaming will produce valid R syntax, including in infix calls, or Arity will refuse the operation.</p></li>
-<li><p><strong>Package knowledge for editor assistance.</strong> I will publish versioned indexes for at least 100 CRAN packages meeting the quality criteria below. These will include packages outside the existing bundle and dependencies used in the evaluation workflows. The indexes will contain exported names, symbol kinds, recoverable function arguments and defaults, and help. Arity will use these indexes to provide completion, hover information, and signature help without requiring local package installation.</p>
+<li><p><strong>Package knowledge for editor assistance.</strong> I will publish versioned indexes for at least 100 CRAN packages meeting the quality criteria below, including packages outside the existing bundle and dependencies in the evaluation workflows. The indexes will contain exported names, symbol kinds, recoverable arguments and defaults, and help. They will also record deprecated and defunct functions identified from explicit declarations, with replacements where available. Arity will use these indexes for completion, hover information, signature help, and linting without local package installation.</p>
 <p>I will document the schema, automate weekly updates, and add a prefetch command for downloading indexes in bulk. The editor and CLI will use the same cached metadata and work with downloads disabled. Network access will remain an explicit user choice. Each index will record the package version and how the metadata was extracted.</p></li>
 <li><p><strong>Validation and adoption.</strong> I will test complete editing workflows on ten packages with cross-file references, imports, shared documentation, and nonstandard evaluation. These tests will also compare diagnostics from the editor and CLI. I will update the guides for VS Code, Positron, Neovim, and continuous integration (CI), explaining how to use Arity alongside other R tools and how to work offline.</p></li>
 </ol>
-<p>Each behavior change will have regression tests and tests for cases that should remain unchanged. I will build on Arity’s existing corpus checks, protocol tests, and benchmarks.</p>
 </section>
 <section id="architecture" class="level3">
 <h3 class="anchored" data-anchor-id="architecture">Architecture</h3>
-<p>Arity analyzes code across a project and updates its analysis as files change. Its architecture for parsing, formatting, and language intelligence is inspired by <a href="https://rust-analyzer.github.io/">rust-analyzer</a>. The separately published <a href="https://crates.io/crates/arity-parser"><code>arity-parser</code></a> and <a href="https://crates.io/crates/arity-formatter"><code>arity-formatter</code></a> libraries are already used by <a href="https://github.com/eitsupi/mini-roxygen"><code>mini-roxygen-core</code></a>, which generates R documentation and NAMESPACE files from roxygen comments.</p>
+<!--
+What does the high-level architecture look like?
+-->
 <p>Arity’s metadata harvester already reads serialized R objects and installed-package help without running R. Its binary parsing and Rd decoding overlap with <a href="https://github.com/eitsupi/r-documentation-rs">r-documentation-rs</a>. I will coordinate with its maintainer to consolidate these readers in r-documentation-rs, reducing duplication and making improvements available to other R tools. Arity will continue to handle package discovery, export resolution, metadata indexing, caching, and editor integration.</p>
 <p>As of September 2026, Arity bundles export names for over 500 packages and has a workflow to refresh them weekly. The remote client already supports downloads, disk caching, and versioned indexes, but accepts only exported names. I will add a pipeline to publish richer indexes, extend the client to supply signatures and help, and make cached exports available to the CLI. Local indexes will take precedence, and Arity will show the package version when it uses a remote index.</p>
 </section>
 <section id="assumptions" class="level3">
 <h3 class="anchored" data-anchor-id="assumptions">Assumptions</h3>
-<p>Static analysis cannot determine what every name refers to at runtime. Arity will refuse uncertain rewrites, and I will document unsupported cases. Remote indexes describe current releases, which may differ from the versions a project uses.</p>
-<p>The main risks are incorrect or incomplete metadata, confusion between package versions, and errors when renaming quoted function names. I will record missing fields and failed extractions, and older metadata will retain the version of the package it describes. I will keep the work within budget by selecting packages and using existing infrastructure. Historical package versions and signatures that require running R are outside the scope of this project.</p>
+<!--
+What assumptions are you making that, if proven false, would invalidate the project?
+-->
+<p>Static analysis cannot determine what every name refers to at runtime. Arity will refuse uncertain rewrites and withhold deprecation diagnostics when function resolution or status is uncertain. I will document unsupported cases. Remote indexes describe current releases, which may differ from project dependencies; diagnostics will identify the indexed version.</p>
+<p>The main risks are incorrect or incomplete metadata, confusion between package versions, and errors when renaming quoted function names. I will record missing fields and failed extractions, and older metadata will retain the version of the package it describes. I will keep the work within budget by selecting packages and using existing infrastructure. Historical package versions, argument-specific deprecations, and signatures that require running R are outside this project’s scope.</p>
 </section>
 <section id="external-dependencies" class="level3">
 <h3 class="anchored" data-anchor-id="external-dependencies">External Dependencies</h3>
+<!--
+What external dependencies does the project have (e.g. libraries, services, other projects, etc.)?
+-->
 <p>For the pilot, I will extract metadata from unpacked <a href="https://docs.r-universe.dev/install/binaries.html">R-universe binary packages</a>, falling back on packages installed in CI when needed. I will check the complete export lists and samples of signatures and help against the same package versions in R, and use roxygen2 to check documentation behavior. These checks will use R, but users will not need a running R session or installed dependencies to use the resulting metadata. The source packages and extracted data will retain their version and license information.</p>
-<p>I am responsible for delivering the project, and the budget does not assume development time from other maintainers. The work does not require changes to R.</p>
 </section>
 </section>
 </section>
@@ -2283,13 +2354,30 @@ vertical-align: -.125em;
 <h1>Project Plan</h1>
 <section id="start-up-phase" class="level2">
 <h2 class="anchored" data-anchor-id="start-up-phase">Start-Up Phase</h2>
-<p>The first milestone (M1) is scheduled to begin in December 2026, following completion of the grant agreement. I will pin versions of ten evaluation packages, define their editing workflows, and record baseline diagnostics and response times. I will reproduce the analysis problems described above and document the setup so that I can compare the final results with this baseline. Existing reproductions from <code>future</code> provide a starting point.</p>
-<p>Initial extraction checks in September 2026 found the required fields for every exported function in glue, withr, R6, and cli. For magrittr, coverage was 16 of 42 functions, largely because primitive aliases lack formal arguments. The checks also found S3 methods incorrectly listed as exports. The metadata pilot will build on these results. It will use glue, withr, R6, and cli, along with tinytable to test a package outside the existing bundle. I will also use magrittr to test incomplete indexes. I will fix the S3 export errors during M1, before publication.</p>
-<p>During M1, I will identify the overlapping code, missing APIs, and tests needed to consolidate the readers in r-documentation-rs. I will use the pilot packages to compare arguments, defaults, and help with results from both the existing extractor and R, and estimate the work for M2. If full consolidation would exceed the available hours, I will retain the parts of Arity’s extractor needed to complete the project and defer the remaining consolidation work.</p>
-<p>Before implementation begins in M2, five pilot packages must pass the quality criteria below. Arity must also provide signatures and help without local installation for packages both inside and outside the existing bundle. I will estimate the cost of weekly updates. If the pilot cannot meet these requirements within budget, I will agree on a reduced scope with the ISC, giving priority to the metadata features and offline access.</p>
+<!--
+Covering the planning phase, this section should provide a relatively
+detailed plan of how work will start on the project. This section is
+important because projects need to get up and running quickly.
+
+
+ - [ ] Setting up collaboration platform inc. code for contributors etc.
+ - [ ] License decisions
+ - [ ] Reporting framework
+-->
+<p>The first milestone (M1) will begin in December 2026, after the grant agreement. I will pin versions of ten evaluation packages, define their editing workflows, and record baseline diagnostics and response times. I will reproduce the analysis problems, starting with existing cases from <code>future</code>, and document the setup for comparison with the final results.</p>
+<p>Initial extraction checks in September 2026 found the required fields for every exported function in glue, withr, R6, and cli. For magrittr, coverage was 16 of 42 functions, largely because primitive aliases lack formal arguments. The checks also found S3 methods incorrectly listed as exports. The metadata pilot will use glue, withr, R6, and cli, along with tinytable to test a package outside the existing bundle. I will also use magrittr to test incomplete indexes. I will fix the S3 export errors during M1, before publication.</p>
+<p>During M1, I will identify the overlapping code, missing APIs, and tests needed to consolidate the readers in r-documentation-rs. I will use the pilot packages to compare arguments, defaults, and help with results from both the existing extractor and R. I will also test extraction of deprecation declarations and define the supported cases before M2. If full consolidation exceeds the available hours, I will retain the necessary parts of Arity’s extractor and defer the remaining consolidation work.</p>
+<p>Before M2, five pilot packages must pass the quality criteria below. Arity must also provide signatures and help without local installation for packages both inside and outside the existing bundle. I will estimate the cost of weekly updates. If the pilot cannot meet these requirements within budget, I will agree on a reduced scope with the ISC, giving priority to the metadata features and offline access.</p>
 </section>
 <section id="technical-delivery" class="level2">
 <h2 class="anchored" data-anchor-id="technical-delivery">Technical Delivery</h2>
+<!--
+Covering the actual delivery of the project this section should
+provide at least a high-level description of the implementation.
+
+Including target dates is really important as you need to be committed
+and the ISC need to have a means of tracking delivery
+-->
 <table class="caption-top table">
 <colgroup>
 <col style="width: 19%">
@@ -2338,24 +2426,61 @@ vertical-align: -.125em;
 </tr>
 </tbody>
 </table>
-<p>M1 includes planning and estimating the consolidation work. Changes to the shared readers and their integration into Arity must fit within M2’s 65 hours. The estimates include regression tests, with eight hours in M2 set aside for unexpected work. The project is scheduled to run from December 2026 through February 2027. If the grant agreement is delayed, I will agree on revised milestone dates with the ISC before work begins. I will track progress and completion criteria in public GitHub issues.</p>
+<p>The estimates include regression tests, with eight hours in M2 set aside for unexpected work. If the grant agreement is delayed, I will agree on revised milestone dates with the ISC before work begins. I will track progress and completion criteria in public GitHub issues.</p>
 </section>
 <section id="other-aspects" class="level2">
 <h2 class="anchored" data-anchor-id="other-aspects">Other Aspects</h2>
+<!--
+How will you ensure that your work is available to the widest number
+of people? Please specify the open-source or creative commons license(s)
+you will use, how you will host your code so that others can contribute,
+and how you will publicize your work. We encourage you to plan content
+to be shared quarterly on the R Consortium blog.
+
+ - [ ] Announcement post
+ - [ ] Delivery blog post
+ - [ ] Social media
+ - [ ] UseR!
+ - [ ] ISC meetings
+-->
 <p>Code and tests will use Arity’s MIT license. Evaluation sources and examples will retain applicable notices. I will publish the schema, code for the publishing pipeline, documentation, and results, along with instructions for rebuilding or mirroring the dataset.</p>
-<p>Furthermore, I will invite package authors and tooling developers to try a prerelease and will also write R Consortium blog posts to announce the project and share results, examples, and limitations.</p>
+<p>I will invite package authors and tooling developers to try a prerelease and write R Consortium blog posts announcing the project and sharing results, examples, and limitations.</p>
 </section>
 <section id="budget-funding-plan" class="level2">
 <h2 class="anchored" data-anchor-id="budget-funding-plan">Budget &amp; Funding Plan</h2>
+<!--
+Note that the maximum grant is $10k USD. The proposal should be in USD.
+
+Outline the milestones for development and how much funding will be
+required for each stage (as payments will be tied to project milestone
+completion). This also helps the ISC in the event of partial funding.
+Each milestone should specify the work to be done and the
+expected outcomes, providing enough detail for the ISC to understand
+the scope of the project work and assess the likelihood of success.
+
+We expect that most of the budget will be allocated
+for labor costs. We do not cover indirect costs. The ISC grants cannot
+cover such things as travel, lodging, food, journal publication fees,
+or personal hardware. Cloud services may be covered if they are specific
+to the project and the project period. The ISC reserves the right to vet
+how funds are used for each project separately. If in doubt, please reach
+out to us.
+-->
 <p>I intend to receive the grant personally. The requested USD 10,000 will fund 125 hours of my time at USD 80 per hour. The budget assumes no other funding or contributors.</p>
-<p>The dataset will be updated through GitHub actions, with snapshots on GitHub Releases in a separate repository. I intend to maintain the pipeline after the grant, and public scripts will let others reproduce or mirror it. I am not requesting funds for recurring hosting costs.</p>
 <p>With partial funding, I would publish at least 50 indexes meeting the same quality criteria and evaluate five packages. This would still include the metadata features and offline support described above, plus safe infix renaming. I would defer the other reliability fixes and agree on the hours, funding, and dates with the ISC before accepting partial funding.</p>
 </section>
 </section>
 <section id="success" class="level1">
 <h1>Success</h1>
+<!--
+Projects should have a definition of done that is measurable, and a
+thorough understanding going in of what the risks are to delivery
+-->
 <section id="definition-of-done" class="level2">
 <h2 class="anchored" data-anchor-id="definition-of-done">Definition of Done</h2>
+<!--
+What does success look like?
+-->
 <p>The project will be complete when I have published a tagged Arity release and met the following criteria:</p>
 <dl>
 <dt>Language-server reliability</dt>
@@ -2365,7 +2490,7 @@ Tests show that Arity resolves shared documentation, reports undocumented parame
 <dt>Package knowledge</dt>
 <dd>
 <p>At least 100 versioned indexes are published, with a documented schema and working weekly updates. For a package to count toward the target, its index must include arguments, defaults, and help for at least 80% of its exported functions. Export lists must match R’s results for the same versions. Sampled arguments, defaults, and help must match or be withheld, and missing fields will be reported.</p>
-<p>Tests show completion details, hover information, and signature help for packages that are not installed locally, including packages outside the existing bundle. The same tests pass offline after prefetch. Given the same source, configuration, and cached metadata, name resolution and diagnostics agree between the editor and CLI.</p>
+<p>Tests show completion details, hover information, and signature help without local installation, including packages outside the bundle. They also verify diagnostics for deprecated and defunct functions, covering supported declarations and local shadowing. The same tests pass offline after prefetch. With identical source, configuration, and cached metadata, name resolution and diagnostics agree between the editor and CLI.</p>
 </dd>
 <dt>Validation and adoption</dt>
 <dd>
@@ -2375,12 +2500,19 @@ I have published workflows and before-and-after results for ten packages, includ
 </section>
 <section id="measuring-success" class="level2">
 <h2 class="anchored" data-anchor-id="measuring-success">Measuring Success</h2>
-<p>The report will compare diagnostics and response times before and after the project using the ten package workflows. I will classify sampled diagnostic findings as defects, false positives, or unresolved cases, and report remaining limitations and any new regressions. For metadata, I will report coverage, accuracy, how current the data is, and extraction failures. The report will document the versions, configuration, and measurement setup so others can reproduce the comparison.</p>
-<p>Feedback on the prerelease may add to these results, but completion will not depend on download counts or volunteer participation.</p>
+<!--
+How will we know when success is achieved, what markers can we use
+along the way
+-->
+<p>The report will compare diagnostics and response times before and after the project using the ten package workflows. I will classify sampled diagnostic findings as defects, false positives, or unresolved cases, and report remaining limitations and any new regressions. For metadata, I will report coverage, accuracy, how current the data is, and extraction failures, with deprecation coverage reported separately. The report will document the versions, configuration, and measurement setup so others can reproduce the comparison.</p>
 </section>
 <section id="future-work" class="level2">
 <h2 class="anchored" data-anchor-id="future-work">Future Work</h2>
-<p>Future work could cover more packages, select exact versions from a project’s lockfile, support the CRAN Archive with package metadata from <a href="https://github.com/r-hub/allpackages">ALLPACKAGES</a>, and use runtime tracing. These are outside the scope of this grant.</p>
+<!--
+How could this be extended / developed in the future by yourself
+and/or the community in general?
+-->
+<p>Future work could cover more packages, select exact versions from a project’s lockfile, support the CRAN Archive with package metadata from <a href="https://github.com/r-hub/allpackages">ALLPACKAGES</a>, and use runtime tracing.</p>
 <div class="refs">
 
 </div>

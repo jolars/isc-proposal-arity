@@ -10,7 +10,7 @@ documentation. I created [Arity](https://arity.cc) to help developers navigate
 and check this code from their editor without running R. Arity is an
 MIT-licensed language server written in Rust, with an integrated formatter and
 linter. It supports VS Code, Positron, Neovim, Zed, and other editors through
-the Language Server Protocol (LSP).
+the language server protocol\ (LSP).
 
 This project will improve Arity's handling of shared documentation and function
 names, and provide function signatures and help for packages that are not

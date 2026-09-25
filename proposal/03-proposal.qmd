@@ -78,7 +78,7 @@ Arity's metadata harvester already reads serialized R objects and
 installed-package help without running R. Its binary parsing and Rd decoding
 overlap with
 [r-documentation-rs](https://github.com/eitsupi/r-documentation-rs). I will
-coordinate with its maintainer to consolidate these readers in
+coordinate with its maintainer on consolidating these readers in
 r-documentation-rs, reducing duplication and making improvements available to
 other R tools. Arity will continue to handle package discovery, export
 resolution, metadata indexing, caching, and editor integration.

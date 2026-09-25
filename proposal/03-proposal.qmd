@@ -64,10 +64,9 @@ Package knowledge for editor assistance
 Validation and documentation
 
 :   I will test complete editing workflows on ten packages with cross-file
-    references, imports, shared documentation, and nonstandard evaluation. These
-    tests will also compare diagnostics from the editor and CLI. I will update
-    the guides for VS Code, Positron, Neovim, and continuous integration (CI),
-    explaining how to use Arity alongside other R tools and how to work offline.
+    references, imports, shared documentation, and nonstandard evaluation. I
+    will update the guides for editors and continuous integration (CI),
+    explaining how to use Arity alongside other R tools.
 
 ### Architecture
 

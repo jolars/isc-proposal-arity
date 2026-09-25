@@ -34,8 +34,7 @@ Who are the people who have actively helped with this proposal but
 won't necessarily be on the core project team later?
 -->
 
-I will carry out the work myself. The budget does not include development time
-from other contributors.
+I will carry out the work myself.
 
 ## Consulted
 

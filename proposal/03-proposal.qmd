@@ -64,10 +64,6 @@ What is the smallest thing you can build that delivers value to your users?
    continuous integration (CI), explaining how to use Arity alongside other R
    tools and how to work offline.
 
-Each behavior change will have regression tests and tests for cases that should
-remain unchanged. I will build on Arity's existing corpus checks, protocol
-tests, and benchmarks.
-
 ### Architecture
 
 <!--

@@ -37,8 +37,3 @@ for others. Richer metadata would provide that assistance without installation
 and enable linting of deprecated and defunct functions. The editor and
 command-line interface (CLI) also need to share cached metadata when downloads
 are disabled.
-
-These improvements will help package authors and contributors catch errors
-before they reach users. Publishing the metadata separately will also let other
-R tools use it, while the tests and reported limitations will help their
-developers evaluate similar behavior.

@@ -57,9 +57,6 @@ accuracy, how current the data is, and extraction failures, with deprecation
 coverage reported separately. The report will document the versions,
 configuration, and measurement setup so others can reproduce the comparison.
 
-Feedback on the prerelease may add to these results, but completion will not
-depend on download counts or volunteer participation.
-
 ## Future Work
 
 <!--
@@ -70,4 +67,3 @@ and/or the community in general?
 Future work could cover more packages, select exact versions from a project's
 lockfile, support the CRAN Archive with package metadata from
 [ALLPACKAGES](https://github.com/r-hub/allpackages), and use runtime tracing.
-These are outside the scope of this grant.

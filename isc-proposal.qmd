@@ -7,7 +7,7 @@ author:
     affiliations:
       - "Department of Mathematical Sciences, University of Copenhagen"
 
-date: 2026-09-18
+date: today
 date-format: iso
 tbl-colwidths: [19, 18, 43, 8, 12]
 format:

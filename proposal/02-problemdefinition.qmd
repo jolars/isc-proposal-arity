@@ -26,10 +26,11 @@ server that works without an R session or Jupyter kernel. Adapting Ark to
 Arity's design would have required extracting the server and replacing its
 dependencies on the R runtime, which is what motivated the development of Arity.
 
-Arity still has limitations that affect package development. It can misinterpret
-shared roxygen documentation, miss undocumented parameters, and handle
-references and call hierarchy inconsistently. Renaming can also produce invalid
-R syntax, for example when a function is used as an infix operator.
+Yet Arity still has limitations that affect package development. It can, for
+instance, misinterpret shared roxygen documentation, miss undocumented
+parameters, and handle references and call hierarchy inconsistently. Renaming
+can also produce invalid R syntax, for example when a function is used as an
+infix operator.
 
 Arity also needs better support for dependencies that are not installed locally.
 It provides signatures and help for installed packages, but only exported names

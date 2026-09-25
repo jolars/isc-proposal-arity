@@ -2367,7 +2367,7 @@ important because projects need to get up and running quickly.
 <p>The first milestone (M1) will begin in December 2026, after the grant agreement. I will pin versions of ten evaluation packages, define their editing workflows, and record baseline diagnostics and response times. I will reproduce the analysis problems, starting with existing cases from <code>future</code>, and document the setup for comparison with the final results.</p>
 <p>Initial extraction checks in September 2026 found the required fields for every exported function in glue, withr, R6, and cli. For magrittr, coverage was 16 of 42 functions, largely because primitive aliases lack formal arguments. The checks also found S3 methods incorrectly listed as exports. The metadata pilot will use glue, withr, R6, and cli, along with tinytable to test a package outside the existing bundle. I will also use magrittr to test incomplete indexes. I will fix the S3 export errors during M1, before publication.</p>
 <p>During M1, I will identify the overlapping code, missing APIs, and tests needed to consolidate the readers in r-documentation-rs. I will use the pilot packages to compare arguments, defaults, and help with results from both the existing extractor and R. I will also test extraction of deprecation declarations and define the supported cases before M2. If full consolidation exceeds the available hours, I will retain the necessary parts of Arity’s extractor and defer the remaining consolidation work.</p>
-<p>Before M2, five pilot packages must pass the quality criteria below. Arity must also provide signatures and help without local installation for packages both inside and outside the existing bundle. I will estimate the cost of weekly updates. If the pilot cannot meet these requirements within budget, I will agree on a reduced scope with the ISC, giving priority to the metadata features and offline access.</p>
+<p>Before M2, five pilot packages must pass the quality criteria below. Arity must also provide signatures and help without local installation for packages both inside and outside the existing bundle. If the pilot cannot meet these requirements within budget, I will agree on a reduced scope with the ISC, giving priority to the metadata features and offline access.</p>
 </section>
 <section id="technical-delivery" class="level2">
 <h2 class="anchored" data-anchor-id="technical-delivery">Technical Delivery</h2>
@@ -2426,7 +2426,7 @@ and the ISC need to have a means of tracking delivery
 </tr>
 </tbody>
 </table>
-<p>The estimates include regression tests, with eight hours in M2 set aside for unexpected work. If the grant agreement is delayed, I will agree on revised milestone dates with the ISC before work begins. I will track progress and completion criteria in public GitHub issues.</p>
+<p>The estimates include regression tests, with eight hours in M2 set aside for unexpected work. If the grant agreement is delayed, I will agree on revised milestone dates with the ISC before work begins.</p>
 </section>
 <section id="other-aspects" class="level2">
 <h2 class="anchored" data-anchor-id="other-aspects">Other Aspects</h2>

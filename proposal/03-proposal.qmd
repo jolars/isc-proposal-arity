@@ -99,18 +99,16 @@ What assumptions are you making that, if proven false, would invalidate the proj
 Static analysis cannot determine what every name refers to at runtime. Arity
 will refuse uncertain rewrites and withhold deprecation diagnostics when
 function resolution or status is uncertain. I will document unsupported cases.
-Remote indexes describe current releases, which may differ from project
-dependencies. When Arity cannot establish that the versions match, deprecation
-findings will identify the indexed release and remain advisory, without causing
-the CLI to fail.
+The publishing pipeline will initially target current package releases. An
+available index may describe a different version from a project's dependency.
+When Arity cannot establish that the versions match, deprecation findings will
+identify the indexed release and remain advisory, without causing the CLI to
+fail.
 
-The main risks are incorrect or incomplete metadata, confusion between package
-versions, and errors when renaming quoted function names. I will record missing
-fields and failed extractions, and older metadata will retain the version of the
-package it describes. I will keep the work within budget by selecting packages
-and using existing infrastructure. Historical package versions,
-argument-specific deprecations, and signatures that require running R are
-outside this project's scope.
+I will record missing fields and failed extractions, and older metadata will
+retain the version of the package it describes. Backfilling historical releases,
+selecting indexes from project lockfiles, argument-specific deprecations, and
+signatures that require running R are outside this project's scope.
 
 ### External Dependencies
 
@@ -122,7 +120,5 @@ For the pilot, I will extract metadata from unpacked [R-universe binary
 packages](https://docs.r-universe.dev/install/binaries.html), falling back on
 packages installed in CI when needed. I will check the complete export lists and
 samples of signatures and help against the same package versions in R, and use
-roxygen2 to check documentation behavior. These checks will use R, but users
-will not need a running R session or installed dependencies to use the resulting
-metadata. The source packages and extracted data will retain their version and
-license information.
+roxygen2 to check documentation behavior. The source packages and extracted data
+will retain their version and license information.

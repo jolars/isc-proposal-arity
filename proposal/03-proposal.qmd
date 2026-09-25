@@ -98,7 +98,8 @@ What assumptions are you making that, if proven false, would invalidate the proj
 
 Static analysis cannot determine what every name refers to at runtime. Arity
 will refuse uncertain rewrites and withhold deprecation diagnostics when
-function resolution or status is uncertain. I will document unsupported cases.
+function resolution or the indexed deprecation status is uncertain. I will
+document unsupported cases.
 The publishing pipeline will initially target current package releases. An
 available index may describe a different version from a project's dependency.
 When Arity cannot establish that the versions match, deprecation findings will

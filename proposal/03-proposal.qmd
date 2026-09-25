@@ -61,7 +61,7 @@ Package knowledge for editor assistance
     explicit user choice. Each index will record the package version and how the
     metadata was extracted.
 
-Validation and adoption
+Validation and documentation
 
 :   I will test complete editing workflows on ten packages with cross-file
     references, imports, shared documentation, and nonstandard evaluation. These
@@ -101,7 +101,9 @@ Static analysis cannot determine what every name refers to at runtime. Arity
 will refuse uncertain rewrites and withhold deprecation diagnostics when
 function resolution or status is uncertain. I will document unsupported cases.
 Remote indexes describe current releases, which may differ from project
-dependencies; diagnostics will identify the indexed version.
+dependencies. When Arity cannot establish that the versions match, deprecation
+findings will identify the indexed release and remain advisory, without causing
+the CLI to fail.
 
 The main risks are incorrect or incomplete metadata, confusion between package
 versions, and errors when renaming quoted function names. I will record missing

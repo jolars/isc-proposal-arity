@@ -35,11 +35,13 @@ define the supported cases before M2. If full consolidation exceeds the
 available hours, I will retain the necessary parts of Arity's extractor and
 defer the remaining consolidation work.
 
-Before M2, five pilot packages must pass the quality criteria below. Arity must
-also provide signatures and help without local installation for packages both
-inside and outside the existing bundle. If the pilot cannot meet these
-requirements within budget, I will agree on a reduced scope with the ISC, giving
-priority to the metadata features and offline access.
+Before M2, five pilot packages must pass the metadata quality criteria below.
+A prototype using Arity's existing client must provide signatures and help
+without local installation for packages both inside and outside the existing
+bundle. M2 will extend this prototype to the full package set and add automated
+publication, prefetching, and shared offline access. If the pilot cannot meet
+these requirements within budget, I will agree on a reduced scope with the ISC,
+giving priority to the metadata features and offline access.
 
 ## Technical Delivery
 

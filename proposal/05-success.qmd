@@ -17,8 +17,10 @@ met the following criteria:
 Language-server reliability
 :   Tests show that Arity resolves shared documentation, reports undocumented
     parameters, and handles references and call hierarchy consistently for
-    quoted function names. Renaming produces valid R syntax or Arity refuses the
-    operation.
+    quoted function names. For supported quoted-name and infix cases, renaming
+    updates definitions and statically resolved references, leaves unrelated
+    bindings unchanged, and produces valid R syntax. Tests also verify that
+    Arity refuses uncertain rewrites.
 
 Package knowledge
 
@@ -32,11 +34,12 @@ Package knowledge
     Tests show completion details, hover information, and signature help without
     local installation, including packages outside the bundle. They also verify
     diagnostics for deprecated and defunct functions, covering supported
-    declarations and local shadowing. The same tests pass offline after prefetch.
+    declarations, local shadowing, and advisory behavior when dependency versions
+    cannot be matched. The same tests pass offline after prefetch.
     With identical source, configuration, and cached metadata, name resolution and
     diagnostics agree between the editor and CLI.
 
-Validation and adoption
+Validation and documentation
 :   I have published workflows and before-and-after results for ten packages,
     including checks in VS Code and Neovim, along with editor and CI guides and
     maintenance instructions. The release passes the existing workspace and

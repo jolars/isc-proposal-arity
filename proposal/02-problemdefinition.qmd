@@ -1,10 +1,21 @@
 # The Problem
 
-Package authors need to follow references across files, check imported
-functions, and keep documentation consistent with their code. Language servers
-help with these tasks through completion, hover information, signature help,
-navigation, symbol renaming, and call hierarchy. These features help developers
-catch errors while editing and make changes across a package.
+```{=html}
+<!--
+Outlining the issue / weak point / problem to be solved by this
+proposal. This should be a compelling section that sets the reader up
+for the next section - the proposed solution!
+
+It is important to cover:
+
+ - [ ] What the problem is
+ - [ ] Who it affects
+ - [ ] Why is it a problem
+ - [ ] What will solving the problem enable (why should it be solved)
+ - [ ] Brief summary of existing work and previous attempts (e.g., relevant R packages)
+ - [ ] If proposing changes to R itself: letter of support from R Core member
+-->
+```
 
 There are three language servers for R:
 [languageserver](https://github.com/REditorSupport/languageserver),
@@ -21,11 +32,11 @@ references and call hierarchy inconsistently. Renaming can also produce invalid
 R syntax, for example when a function is used as an infix operator.
 
 Arity also needs better support for dependencies that are not installed locally.
-It already provides function signatures and help for installed packages, but for
-other packages it has access only to exported names. Developers therefore need
-to install their dependencies to get signatures and help in the editor. Richer
-metadata would remove this requirement. The editor and command-line interface
-(CLI) also need to use the same cached metadata when downloads are disabled.
+It provides signatures and help for installed packages, but only exported names
+for others. Richer metadata would provide that assistance without installation
+and enable linting of deprecated and defunct functions. The editor and
+command-line interface (CLI) also need to share cached metadata when downloads
+are disabled.
 
 These improvements will help package authors and contributors catch errors
 before they reach users. Publishing the metadata separately will also let other

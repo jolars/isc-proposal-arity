@@ -1,6 +1,24 @@
 # Signatories
 
+<!--
+This section provides the ISC with a view of the support received from
+the community for a proposal. Acceptance isn't predicated on
+popularity but community acceptance is important. Willingness to
+accept outside input is also a good marker for project delivery.
+
+An optional section would be for R-Core signatories where changes to R
+are proposed.
+-->
+
 ## Project team
+
+<!--
+Who are the people responsible for actually delivering the project if
+the proposal gets accepted and are already signed up and rearing to
+go? Briefly describe all participants and the skills they will bring
+to the project. Include public artifacts such as code repositories to
+show their tack record.
+-->
 
 I am Johan Larsson, Arity's maintainer and a postdoctoral researcher in
 statistics and machine learning at the University of Copenhagen's Department of
@@ -11,10 +29,20 @@ Mathematical Sciences. I also develop and maintain several R packages, including
 
 ## Contributors
 
+<!--
+Who are the people who have actively helped with this proposal but
+won't necessarily be on the core project team later?
+-->
+
 I will carry out the work myself. The budget does not include development time
 from other contributors.
 
 ## Consulted
+
+<!--
+Who has been given the opportunity to provide feedback on the
+proposal?
+-->
 
 I'm grateful for feedback from Tatsuya Shima (maintainer of
 [arf](https://github.com/eitsupi/arf),

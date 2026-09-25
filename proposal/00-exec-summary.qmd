@@ -1,5 +1,10 @@
 # Executive Summary
 
+<!--
+This section provides a condensed view of the entire proposal, one page long.
+It should be a comprehensive high-level overview that captures the essence of the proposal, including its goals, methods, expected outcomes, deliverables, and budget.
+-->
+
 R package development involves working across source files, dependencies, and
 documentation. I created [Arity](https://arity.cc) to help developers navigate
 and check this code from their editor without running R. Arity is an

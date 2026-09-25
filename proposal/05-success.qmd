@@ -1,6 +1,15 @@
 # Success
 
+<!--
+Projects should have a definition of done that is measurable, and a
+thorough understanding going in of what the risks are to delivery
+-->
+
 ## Definition of Done
+
+<!--
+What does success look like?
+-->
 
 The project will be complete when I have published a tagged Arity release and
 met the following criteria:
@@ -20,11 +29,12 @@ Package knowledge
     Sampled arguments, defaults, and help must match or be withheld, and missing
     fields will be reported.
 
-    Tests show completion details, hover information, and signature help for
-    packages that are not installed locally, including packages outside the existing
-    bundle. The same tests pass offline after prefetch. Given the same source,
-    configuration, and cached metadata, name resolution and diagnostics agree
-    between the editor and CLI.
+    Tests show completion details, hover information, and signature help without
+    local installation, including packages outside the bundle. They also verify
+    diagnostics for deprecated and defunct functions, covering supported
+    declarations and local shadowing. The same tests pass offline after prefetch.
+    With identical source, configuration, and cached metadata, name resolution and
+    diagnostics agree between the editor and CLI.
 
 Validation and adoption
 :   I have published workflows and before-and-after results for ten packages,
@@ -34,18 +44,28 @@ Validation and adoption
 
 ## Measuring Success
 
+<!--
+How will we know when success is achieved, what markers can we use
+along the way
+-->
+
 The report will compare diagnostics and response times before and after the
 project using the ten package workflows. I will classify sampled diagnostic
 findings as defects, false positives, or unresolved cases, and report remaining
 limitations and any new regressions. For metadata, I will report coverage,
-accuracy, how current the data is, and extraction failures. The report will
-document the versions, configuration, and measurement setup so others can
-reproduce the comparison.
+accuracy, how current the data is, and extraction failures, with deprecation
+coverage reported separately. The report will document the versions,
+configuration, and measurement setup so others can reproduce the comparison.
 
 Feedback on the prerelease may add to these results, but completion will not
 depend on download counts or volunteer participation.
 
 ## Future Work
+
+<!--
+How could this be extended / developed in the future by yourself
+and/or the community in general?
+-->
 
 Future work could cover more packages, select exact versions from a project's
 lockfile, support the CRAN Archive with package metadata from

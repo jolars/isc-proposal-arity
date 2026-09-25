@@ -16,5 +16,5 @@ This project will improve Arity's handling of shared documentation and function
 names, and provide function signatures and help for packages that are not
 installed locally, helping developers inspect unfamiliar code before installing
 its dependencies. I will publish the metadata and extraction pipeline for reuse
-by other R tools, and test the improvements in complete editing workflows.
-I ask for USD 10,000 to fund 125 hours of labor.
+by other R tools, and test the improvements in complete editing workflows. I ask
+for USD 10,000 to fund 125 hours of labor.

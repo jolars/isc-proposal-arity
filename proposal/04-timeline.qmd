@@ -37,10 +37,9 @@ defer the remaining consolidation work.
 
 Before M2, five pilot packages must pass the quality criteria below. Arity must
 also provide signatures and help without local installation for packages both
-inside and outside the existing bundle. I will estimate the cost of weekly
-updates. If the pilot cannot meet these requirements within budget, I will agree
-on a reduced scope with the ISC, giving priority to the metadata features and
-offline access.
+inside and outside the existing bundle. If the pilot cannot meet these
+requirements within budget, I will agree on a reduced scope with the ISC, giving
+priority to the metadata features and offline access.
 
 ## Technical Delivery
 
@@ -61,8 +60,7 @@ and the ISC need to have a means of tracking delivery
 
 The estimates include regression tests, with eight hours in M2 set aside for
 unexpected work. If the grant agreement is delayed, I will agree on revised
-milestone dates with the ISC before work begins. I will track progress and
-completion criteria in public GitHub issues.
+milestone dates with the ISC before work begins.
 
 ## Other Aspects
 

@@ -45,9 +45,8 @@ proposal?
 
 The proposal draft was published in a [public GitHub
 repository](https://github.com/jolars/isc-proposal-arity) and I invited user
-feedback through social media and the issue tracker for Arity.
-
-I'm grateful for feedback from Jan Hartman and Tatsuya Shima (maintainer of
+feedback through social media and the issue tracker for Arity. I'm grateful for
+feedback from Jan Hartman and Tatsuya Shima (maintainer of
 [arf](https://github.com/eitsupi/arf),
 [r-documentation-rs](https://github.com/eitsupi/r-documentation-rs), and
 [mini-roxygen](https://github.com/eitsupi/mini-roxygen)), whose suggestions

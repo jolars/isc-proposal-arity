@@ -34,7 +34,8 @@ Who are the people who have actively helped with this proposal but
 won't necessarily be on the core project team later?
 -->
 
-I will carry out the work myself.
+I prepared this proposal, incorporating feedback from the people acknowledged
+under [Consulted].
 
 ## Consulted
 
@@ -49,5 +50,4 @@ feedback through social media and the issue tracker for Arity. I'm grateful for
 feedback from Jan Hartman, Josiah Parry and Tatsuya Shima (maintainer of
 [arf](https://github.com/eitsupi/arf),
 [r-documentation-rs](https://github.com/eitsupi/r-documentation-rs), and
-[mini-roxygen](https://github.com/eitsupi/mini-roxygen)), whose suggestions
-helped clarify and improve the proposal.
+[mini-roxygen](https://github.com/eitsupi/mini-roxygen)).

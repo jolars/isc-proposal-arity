@@ -17,16 +17,20 @@ I will begin working on the first milestone (M1) in December 2026, after the
 grant agreement. I will pin versions of ten evaluation packages, define their
 editing workflows, and record baseline diagnostics and response times.
 
+I will track tasks and milestones in [Arity's public GitHub
+repository](https://github.com/jolars/arity). Monthly progress notes will record
+completed work, hours spent, risks, and any changes to the schedule. I will
+publish these notes in the repository and share them with the ISC, linking to
+tests, results, and releases as milestones are completed.
+
 Initial extraction checks in September 2026 found the required fields for every
 exported function in glue, withr, R6, and cli. For magrittr, coverage was 16 of
 42 functions, largely because primitive aliases lack formal arguments. The
 checks also found S3 methods incorrectly listed as exports. I will fix the S3
-export errors during M1, before publication.
-
-During M1, I will test extraction of deprecation declarations and define the
-supported cases before M4. If full consolidation exceeds the available hours, I
-will retain the necessary parts of Arity's extractor and defer the remaining
-consolidation work.
+export errors during M1, before publication. During M1, I will also test
+extraction of deprecation declarations and define the supported cases before M4.
+If full consolidation exceeds the available hours, I will retain the necessary
+parts of Arity's extractor and defer the remaining consolidation work.
 
 Before M4, five pilot packages must pass the metadata quality criteria below. A
 prototype using Arity's existing client must provide signatures and help without
@@ -46,8 +50,7 @@ and the ISC need to have a means of tracking delivery
 
 I plan to spend about 25 hours per month on the project, completing the 125
 hours by April 30, 2027. See @tbl-milestones for the milestones, target dates,
-deliverables, estimated hours, and costs. The estimates include regression tests
-and two hours in each of M2--M5 for unexpected work, totaling eight hours.
+deliverables, estimated hours, and costs.
 
   | Milestone                        | Target date       | Deliverables                                                                                                                | Hours   | Cost (USD) |
   | :--------                        | :----------       | :-----------                                                                                                                | ----:   | ---------: |
@@ -78,14 +81,20 @@ to be shared quarterly on the R Consortium blog.
  - [ ] ISC meetings
 -->
 
-Code and tests will use Arity's MIT license. Evaluation sources and examples
-will retain applicable notices. I will publish the schema, code for the
-publishing pipeline, documentation, and results, along with instructions for
-rebuilding or mirroring the dataset.
+Code, tests, and the metadata schema will use the MIT license. I will publish
+the schema, extraction and publishing pipeline, documentation, and results in
+Arity's GitHub repository, along with instructions for rebuilding or mirroring
+the dataset. Contributors can submit bug reports, suggestions, and patches
+through GitHub issues and pull requests.
 
-I will invite package authors and tooling developers to try a prerelease and
-write R Consortium blog posts announcing the project and sharing results,
-examples, and limitations.
+I will offer the R Consortium blog an announcement in December 2026, a progress
+update in February 2027, and a results post in April 2027, with examples and
+remaining limitations. I will also publish updates on [my
+blog](https://jolars.co), whose R feed is included in [R Weekly's feed
+list](https://github.com/rweekly/rweekly.org/blob/gh-pages/rss_feeds.csv). I
+will share these posts through social media and offer an update at an ISC
+meeting if requested. A useR! presentation would be a possible follow-up after
+the project.
 
 ## Budget & Funding Plan
 

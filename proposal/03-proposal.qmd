@@ -48,6 +48,13 @@ Depending on project type the detail section should include:
 What is the smallest thing you can build that delivers value to your users?
 -->
 
+The smallest useful release is the documentation work in M2: correct handling of
+shared and inherited roxygen documentation and detection of undocumented
+parameters. These fixes give package authors more reliable documentation checks
+and can be released independently of the navigation and metadata work.
+
+The full project covers three areas:
+
 Language-server reliability
 
 :   I will improve analysis of shared and inherited roxygen documentation,
@@ -67,15 +74,12 @@ Validation and documentation
     shared documentation, and nonstandard evaluation, and publish results and
     guides.
 
-### Implementation
-
 Arity already extracts package metadata without running R and bundles export
 names for over 500 packages, refreshed weekly. I will extend its publishing
 pipeline and remote client to distribute richer metadata using the existing
-versioned indexes and disk cache. Local indexes will take precedence, and Arity
-will show the package version when using a remote index.
+versioned indexes and disk cache.
 
-I am coordinating with the maintainer of
+I am also coordinating with the maintainer of
 [r-documentation-rs](https://github.com/eitsupi/r-documentation-rs) to
 consolidate our overlapping binary and Rd readers there for reuse by other R
 tools.

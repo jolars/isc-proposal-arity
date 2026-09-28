@@ -80,11 +80,11 @@ magrittr was 16 of 42 functions, below the threshold, largely because primitive
 aliases lack formal arguments. The checks also found S3 methods incorrectly
 listed as exports.
 
-Validation and documentation
+### Validation and Documentation
 
-:   On the ten evaluation packages, I will test workflows covering cross-file
-    references, imports, shared documentation, and nonstandard evaluation, and
-    publish results and guides.
+On the ten evaluation packages, I will test workflows covering cross-file
+references, imports, shared documentation, and nonstandard evaluation, and
+publish results and guides.
 
 ### Minimum Viable Product
 

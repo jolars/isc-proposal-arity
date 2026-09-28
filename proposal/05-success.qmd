@@ -36,8 +36,9 @@ Package knowledge
     diagnostics for deprecated and defunct functions, covering supported
     declarations, local shadowing, and advisory behavior when dependency versions
     cannot be matched. The same tests pass offline after prefetch.
-    With identical source, configuration, and cached metadata, name resolution and
-    diagnostics agree between the editor and CLI.
+    For the supported deprecation cases, editor and command-line checks report
+    the same diagnostics when given identical source, configuration, and cached
+    metadata.
 
 Validation and documentation
 :   I have published workflows and before-and-after results for ten packages,

@@ -107,8 +107,9 @@ the indexed release and remain advisory.
 
 I will document unsupported cases, missing fields, and failed extractions. Older
 metadata will retain the package version it describes. Historical releases,
-index selection from lockfiles, argument-specific deprecations, and signatures
-requiring R execution are outside scope.
+index selection from lockfiles, and argument-specific deprecations are outside
+scope. Extracting function signatures by querying a running R session is,
+however, outside scope.
 
 If full consolidation exceeds the available hours, I will retain the necessary
 parts of Arity's extractor and defer the remaining consolidation work.

@@ -29,15 +29,15 @@ indexes. I will fix the S3 export errors during M1, before publication.
 
 During M1, I will identify the overlapping code, missing APIs, and tests needed
 to consolidate the readers in r-documentation-rs. I will also test extraction of
-deprecation declarations and define the supported cases before M2. If full
+deprecation declarations and define the supported cases before M4. If full
 consolidation exceeds the available hours, I will retain the necessary parts of
 Arity's extractor and defer the remaining consolidation work.
 
-Before M2, five pilot packages must pass the metadata quality criteria below. A
+Before M4, five pilot packages must pass the metadata quality criteria below. A
 prototype using Arity's existing client must provide signatures and help without
 local installation for packages both inside and outside the existing bundle. If
 the pilot fails to meet these requirements within budget, I will agree on a
-reduced scope with the ISC, prioritizing metadata features and offline access.
+revised scope for the metadata milestones with the ISC.
 
 ## Technical Delivery
 
@@ -49,16 +49,27 @@ Including target dates is really important as you need to be committed
 and the ISC need to have a means of tracking delivery
 -->
 
-  | Milestone                  | Target date       | Deliverables                                                                                 | Hours   | Cost (USD) |
-  | :------------------------- | :---------------- | :---------------------------------------------------------------------------------------     | ------: | ---------: |
-  | M1: Baseline and pilot     | December 31, 2026 | Baseline, metadata prototype, consolidation plan, quality checks, regression cases           |      30 |      2,400 |
-  | M2: Implementation         | January 31, 2027  | Reliability fixes, rich metadata publication and integration, prefetch, shared offline cache |      65 |      5,200 |
-  | M3: Validation and release | February 28, 2027 | Workflow validation, annotated comparison, guides, release, report, maintenance instructions |      30 |      2,400 |
-  | **Total**                  |                   |                                                                                              | **125** | **10,000** |
+I plan to spend about 25 hours per month on the project, completing the 125
+hours by April 30, 2027. The target dates reflect the estimated effort for each
+milestone.
 
-The estimates include regression tests, with eight hours in M2 set aside for
-unexpected work. If the grant agreement is delayed, I will agree on revised
-milestone dates with the ISC before work begins.
+  | Milestone                        | Target date       | Deliverables                                                                                                                | Hours   | Cost (USD) |
+  | :--------                        | :----------       | :-----------                                                                                                                | ----:   | ---------: |
+  | M1: Baseline and pilot           | January 7, 2027   | Baseline, metadata prototype, consolidation plan, quality checks, regression cases                                          |      30 |      2,400 |
+  | M2: Documentation analysis       | January 19, 2027  | Correct handling of shared and inherited roxygen documentation and detection of undocumented parameters                     |      10 |        800 |
+  | M3: Navigation and safe renaming | February 6, 2027  | Consistent references and call hierarchy for quoted names, safe renaming including infix calls                              |      15 |      1,200 |
+  | M4: Reusable package metadata    | February 28, 2027 | Indexes for at least 100 CRAN packages meeting the quality criteria, documented schema, extraction pipeline, weekly updates |      20 |      1,600 |
+  | M5: Package metadata in Arity    | March 25, 2027    | Completion, hover, signature help, deprecation diagnostics, bulk prefetch, shared offline cache for editor and CLI          |      20 |      1,600 |
+  | M6: Validation and release       | April 30, 2027    | Workflow validation, annotated comparison, guides, release, report, maintenance instructions                                |      30 |      2,400 |
+  | **Total**                        |                   |                                                                                                                             | **125** | **10,000** |
+
+M2 and M3 can each be funded independently of the other implementation
+milestones. M4 delivers a reusable dataset and publishing pipeline for other R
+tools. M5 depends on M4.
+
+The estimates include regression tests and two hours in each of M2--M5 for
+unexpected work, totaling eight hours. If the grant agreement is delayed, I will
+agree on revised milestone dates with the ISC before work begins.
 
 ## Other Aspects
 
@@ -110,9 +121,11 @@ I intend to receive the grant personally. The requested USD 10,000 will fund 125
 hours of my time at USD 80 per hour. The budget assumes no other funding or
 contributors.
 
-With partial funding, I would publish indexes for at least 50 CRAN packages
-meeting the same quality criteria and evaluate five packages. This would still
-include the metadata features and offline support described above, plus safe
-infix renaming.
-I would defer the other reliability fixes and agree on the hours, funding, and
-dates with the ISC before accepting partial funding.
+With partial funding, the ISC could select implementation milestones according
+to their value to the R community and the dependencies described above. I would
+adjust the scope and budgets of M1 and M6 to cover the selected work. For
+example, funding M4 without M5 would deliver the reusable metadata and pipeline,
+with extraction checks and maintenance instructions. Funding M2 or M3 would
+focus the baseline, workflow validation, and release on those improvements.
+Before accepting partial funding, I would agree with the ISC on the selected
+milestones, hours, funding, dates, and corresponding completion criteria.

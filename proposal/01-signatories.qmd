@@ -20,9 +20,9 @@ to the project. Include public artifacts such as code repositories to
 show their tack record.
 -->
 
-I am Johan Larsson, Arity's maintainer and a postdoctoral researcher in
-statistics and machine learning at the University of Copenhagen's Department of
-Mathematical Sciences. I also develop and maintain several R packages, including
+I am Arity's maintainer and a postdoctoral researcher in statistics and machine
+learning at the University of Copenhagen's Department of Mathematical Sciences.
+I also develop and maintain several R packages, including
 [eulerr](https://github.com/jolars/eulerr),
 [SLOPE](https://github.com/jolars/SLOPE), and
 [qualpalr](https://github.com/jolars/qualpalr).

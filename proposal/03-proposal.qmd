@@ -51,23 +51,15 @@ Package knowledge for semantic analysis
     index will contain exported names, symbol kinds, function signatures, help,
     and explicit deprecation information. Arity will combine this metadata with
     name resolution to provide completion, hover information, signature help,
-    and deprecation diagnostics without local package installation. It will
-    respect local bindings and withhold deprecation warnings when resolution is
-    uncertain.
+    and deprecation diagnostics without local package installation.
 
-    The indexes will meet the quality criteria below and cover evaluation
-    dependencies and packages outside the existing bundle. I will document the
-    schema, automate weekly updates, and add bulk prefetching. The editor and CLI
-    will share cached metadata and work with downloads disabled. Downloads will
-    remain an explicit user choice. Each index will record the package version and
-    extraction method.
+    Downloads will remain an explicit user choice. Each index will record the
+    package version and extraction method.
 
 Validation and documentation
 
 :   I will test complete editing workflows on ten packages with cross-file
-    references, imports, shared documentation, and nonstandard evaluation. I
-    will update the guides for editors and continuous integration (CI),
-    explaining how to use Arity alongside other R tools.
+    references, imports, shared documentation, and nonstandard evaluation.
 
 ### Architecture
 
@@ -119,7 +111,8 @@ What external dependencies does the project have (e.g. libraries, services, othe
 
 For the pilot, I will extract metadata from unpacked [R-universe binary
 packages](https://docs.r-universe.dev/install/binaries.html), falling back on
-packages installed in CI when needed. I will check the complete export lists and
-samples of signatures and help against the same package versions in R, and use
-roxygen2 to check documentation behavior. The source packages and extracted data
-will retain their version and license information.
+packages installed in continuous integration (CI) when needed. I will check the
+complete export lists and samples of signatures and help against the same
+package versions in R, and use roxygen2 to check documentation behavior. The
+source packages and extracted data will retain their version and license
+information.

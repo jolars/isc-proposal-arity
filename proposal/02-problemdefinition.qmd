@@ -35,6 +35,4 @@ infix operator.
 Arity also needs better support for dependencies that are not installed locally.
 It provides signatures and help for installed packages, but only exported names
 for others. Richer metadata would provide that assistance without installation
-and enable linting of deprecated and defunct functions. The editor and
-command-line interface (CLI) also need to share cached metadata when downloads
-are disabled.
+and enable linting of deprecated and defunct functions.

@@ -2283,7 +2283,7 @@ It is important to cover:
 -->
 <p>Changing a function in an R package can affect its documentation and calls across several files. Developers need reliable checks and navigation to make these changes safely, but Arity still has gaps: it can misinterpret shared roxygen documentation, miss undocumented parameters, and handle references and call hierarchy inconsistently. Renaming can also produce invalid R syntax, for example when a function is used as an infix operator.</p>
 <p>Exploring unfamiliar package code is also harder when its dependencies are not installed locally. Arity provides signatures and help for installed packages, but only exported names for others. Richer metadata would let developers inspect function signatures and documentation before installing dependencies and enable linting of deprecated and defunct functions.</p>
-<p>Arity is one of three language servers for R, alongside <a href="https://github.com/REditorSupport/languageserver">languageserver</a> and <a href="https://github.com/posit-dev/ark">Ark</a>. The R package languageserver runs in an R session, whereas Ark embeds its language server in an R kernel and powers R support in Positron. Arity is a standalone language server that works without an R session or Jupyter kernel.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Arity is one of three language servers for R, alongside <a href="https://github.com/REditorSupport/languageserver">languageserver</a> and <a href="https://github.com/posit-dev/ark">Ark</a>. The R package languageserver runs in an R session, whereas Ark embeds its language server in an R kernel and powers R support in Positron. Arity is a standalone language server that works without an R session or Jupyter kernel.</p>
 </section>
 <section id="the-proposal" class="level1">
 <h1>The Proposal</h1>
@@ -2305,7 +2305,7 @@ section.
 Include concrete actions you will take and estimated timeline.
 -->
 <p>This project will help R developers understand and change package code from their editor without running R. I will improve Arity’s handling of shared documentation, make references and call hierarchy consistent, and ensure that renaming either produces valid R syntax or is refused. Developers will also gain function signatures and help for dependencies they have not installed, making unfamiliar projects easier to explore.</p>
-<p>The work will produce a public metadata index for at least 100 CRAN packages, together with a documented format and extraction pipeline that other R tools can reuse. From December 2026 through April 2027, I will implement these improvements and test complete editing workflows on ten packages. Published examples and before-and-after results will show what developers can rely on and where limitations remain.</p>
+<p>The work will produce a public metadata index for at least 100 CRAN packages, together with a documented format and extraction pipeline that other R tools can reuse. From December 2026 through April 2027, I will implement these improvements and test complete editing workflows on ten evaluation packages. Published examples and before-and-after results will show what developers can rely on and where limitations remain.</p>
 </section>
 <section id="detail" class="level2">
 <h2 class="anchored" data-anchor-id="detail">Detail</h2>
@@ -2327,15 +2327,12 @@ Depending on project type the detail section should include:
 <p>These indexes will support completion, hover, signature help, and deprecation diagnostics without local installation. Downloads will remain an explicit user choice and use Arity’s existing disk cache. Indexes will record package versions and extraction methods.</p>
 </dd>
 </dl>
-<p>For the pilot, I will extract metadata from unpacked <a href="https://docs.r-universe.dev/install/binaries.html">R-universe binary packages</a>, falling back on packages installed in continuous integration (CI). I will check metadata against the same package versions in R and use roxygen2 to check documentation behavior. Source packages and extracted data will retain version and license information.</p>
-<p>To make the extraction code reusable by other R tools, I am coordinating with the maintainer of <a href="https://github.com/eitsupi/r-documentation-rs">r-documentation-rs</a> to bring our code for reading R binary data and Rd documentation into that library.</p>
-<p>Initial extraction checks in September 2026 found the required fields for every exported function in glue, withr, R6, and cli. For magrittr, coverage was 16 of 42 functions, largely because primitive aliases lack formal arguments. At this coverage, magrittr would not meet the project’s 80% threshold for inclusion in the 100-package target. The checks also found S3 methods incorrectly listed as exports.</p>
-<dl>
-<dt>Validation and documentation</dt>
-<dd>
-<p>I will test ten package workflows covering cross-file references, imports, shared documentation, and nonstandard evaluation, and publish results and guides.</p>
-</dd>
-</dl>
+<p>For the metadata pilot, I will extract metadata from unpacked <a href="https://docs.r-universe.dev/install/binaries.html">R-universe binary packages</a>, falling back on packages installed in continuous integration (CI). I will check metadata against the same package versions in R and use roxygen2 to check documentation behavior. Source packages and extracted data will retain version and license information. To make the extraction code reusable by other R tools, I am coordinating with the maintainer of <a href="https://github.com/eitsupi/r-documentation-rs">r-documentation-rs</a> to consolidate our code for reading R binary data and Rd documentation.</p>
+<p>To count toward the 100-package target, an index must provide arguments, defaults, and help for at least 80% of exported functions after incorrect or uncertain fields are withheld. Initial checks in September 2026 found these fields for every exported function in glue, withr, R6, and cli. Coverage for magrittr was 16 of 42 functions, below the threshold, largely because primitive aliases lack formal arguments. The checks also found S3 methods incorrectly listed as exports.</p>
+<section id="validation-and-documentation" class="level3">
+<h3 class="anchored" data-anchor-id="validation-and-documentation">Validation and Documentation</h3>
+<p>On the ten evaluation packages, I will test workflows covering cross-file references, imports, shared documentation, and nonstandard evaluation, and publish results and guides.</p>
+</section>
 <section id="minimum-viable-product" class="level3">
 <h3 class="anchored" data-anchor-id="minimum-viable-product">Minimum Viable Product</h3>
 <!--
@@ -2365,10 +2362,10 @@ important because projects need to get up and running quickly.
  - [ ] License decisions
  - [ ] Reporting framework
 -->
-<p>I will begin working on the first milestone (M1) in December 2026, after the grant agreement. I will pin versions of ten evaluation packages, define their editing workflows, and record baseline diagnostics and response times.</p>
+<p>I will begin working on the first milestone (M1) in December 2026, after the grant agreement. I will pin versions of the ten evaluation packages, define their editing workflows, and record baseline diagnostics and response times.</p>
 <p>I will track tasks and milestones in <a href="https://github.com/jolars/arity">Arity’s public GitHub repository</a>. Monthly progress notes will record completed work, hours spent, risks, and any changes to the schedule. I will publish these notes in the repository and share them with the ISC, linking to tests, results, and releases as milestones are completed.</p>
 <p>During M1, I will fix the S3 export errors and test extraction of deprecation declarations. I will define the supported cases before the metadata publication milestone (M4).</p>
-<p>Before M4, five pilot packages must pass the metadata quality criteria listed under “Package knowledge” in <a href="#definition-of-done">Definition of Done</a>. A prototype using Arity’s existing client must provide signatures and help without local installation for packages both inside and outside the existing bundle. If the pilot fails to meet these requirements within budget, I will agree on a revised scope for the metadata milestones with the ISC.</p>
+<p>Before M4, five packages in the metadata pilot must pass the quality criteria listed under “Package knowledge” in <a href="#definition-of-done">Definition of Done</a>. A prototype using Arity’s existing client must provide signatures and help without local installation for packages both inside and outside the existing bundle. If the pilot fails to meet these requirements within budget, I will agree on a revised scope for the metadata milestones with the ISC.</p>
 </section>
 <section id="technical-delivery" class="level2">
 <h2 class="anchored" data-anchor-id="technical-delivery">Technical Delivery</h2>
@@ -2414,21 +2411,21 @@ Table 1: Milestones for the project, with target dates, deliverables, estimated
 <tr class="even">
 <td style="text-align: left;">M2: Documentation analysis</td>
 <td style="text-align: left;">Jan 19, 2027</td>
-<td style="text-align: left;">Correct handling of shared and inherited roxygen documentation and detection of undocumented parameters</td>
+<td style="text-align: left;">Shared and inherited roxygen support, with checks for undocumented parameters</td>
 <td style="text-align: right;">10</td>
 <td style="text-align: right;">800</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">M3: Navigation and safe renaming</td>
 <td style="text-align: left;">Feb 6, 2027</td>
-<td style="text-align: left;">Consistent references and call hierarchy for quoted names, safe renaming including infix calls</td>
+<td style="text-align: left;">Consistent navigation for quoted names and safe renaming, including infix calls</td>
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">1,200</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">M4: Reusable package metadata</td>
 <td style="text-align: left;">Feb 28, 2027</td>
-<td style="text-align: left;">Indexes for at least 100 CRAN packages meeting the quality criteria, documented schema, extraction pipeline, weekly updates</td>
+<td style="text-align: left;">Indexes for at least 100 CRAN packages, documented schema, and extraction pipelines</td>
 <td style="text-align: right;">20</td>
 <td style="text-align: right;">1,600</td>
 </tr>
@@ -2442,7 +2439,7 @@ Table 1: Milestones for the project, with target dates, deliverables, estimated
 <tr class="even">
 <td style="text-align: left;">M6: Validation and release</td>
 <td style="text-align: left;">Apr 30, 2027</td>
-<td style="text-align: left;">Workflow validation, annotated comparison, guides, release, report, maintenance instructions</td>
+<td style="text-align: left;">Annotated workflow comparisons, release, report, and guides</td>
 <td style="text-align: right;">30</td>
 <td style="text-align: right;">2,400</td>
 </tr>
@@ -2511,7 +2508,7 @@ thorough understanding going in of what the risks are to delivery
 <!--
 What does success look like?
 -->
-<p>The project will be complete when I have published a tagged Arity release and met the following criteria:</p>
+<p>The project will be complete when I have published a tagged Arity release and met these criteria:</p>
 <dl>
 <dt>Language-server reliability</dt>
 <dd>
@@ -2519,12 +2516,11 @@ Tests show that Arity resolves shared documentation, reports undocumented parame
 </dd>
 <dt>Package knowledge</dt>
 <dd>
-<p>Indexes for at least 100 CRAN packages are published, with a documented schema and weekly updates. Export lists must match R’s results for the same versions. I will compare a sample of extracted signatures and help text against the same package versions in R and withhold fields found to be incorrect or uncertain. After withholding incorrect or uncertain fields, each qualifying index must provide arguments, defaults, and help for at least 80% of exported functions. Missing fields will be reported.</p>
-<p>Tests show completion details, hover information, and signature help without local installation, including packages outside the bundle. They also verify diagnostics for deprecated and defunct functions, covering supported declarations, local shadowing, and advisory behavior when dependency versions cannot be matched. The same tests pass offline after prefetch. For the supported deprecation cases, editor and command-line checks report the same diagnostics when given identical source, configuration, and cached metadata.</p>
+<p>Indexes for at least 100 CRAN packages are published, with a documented schema and weekly updates. Export lists must match R’s results for the same versions. After withholding incorrect or uncertain fields, each qualifying index must provide arguments, defaults, and help for at least 80% of exported functions. Tests show completion details, hover information, and signature help without local installation, including packages outside the bundle. They also verify diagnostics for deprecated and defunct functions, covering supported declarations, local shadowing, and advisory behavior when dependency versions cannot be matched. The same tests pass offline after prefetch. For the supported deprecation cases, editor and command-line checks report the same diagnostics when given identical source, configuration, and cached metadata.</p>
 </dd>
 <dt>Validation and documentation</dt>
 <dd>
-I have published workflows and before-and-after results for ten packages, including checks in VS Code and Neovim, along with editor and CI guides and maintenance instructions. The release passes the existing workspace and corpus checks with no unexplained regressions.
+I have published workflows and before-and-after results for the ten evaluation packages, including checks in VS Code and Neovim, along with editor and CI guides and maintenance instructions. The release passes the existing workspace and corpus checks with no unexplained regressions.
 </dd>
 </dl>
 </section>
@@ -2534,7 +2530,7 @@ I have published workflows and before-and-after results for ten packages, includ
 How will we know when success is achieved, what markers can we use
 along the way
 -->
-<p>The report will compare diagnostics and response times before and after the project using the ten package workflows. I will classify sampled diagnostic findings as defects, false positives, or unresolved cases, and report remaining limitations and any new regressions. For metadata, I will report coverage, accuracy, how current the data is, and extraction failures, with deprecation coverage reported separately. The report will document the versions, configuration, and measurement setup so others can reproduce the comparison.</p>
+<p>The report will compare diagnostics and response times before and after the project using workflows on the ten evaluation packages. I will classify sampled diagnostic findings as defects, false positives, or unresolved cases, and report remaining limitations and any new regressions. For metadata, I will report coverage, accuracy, how current the data is, and extraction failures, with deprecation coverage reported separately. The report will document the versions, configuration, and measurement setup so others can reproduce the comparison.</p>
 </section>
 <section id="future-work" class="level2">
 <h2 class="anchored" data-anchor-id="future-work">Future Work</h2>
@@ -2549,13 +2545,7 @@ and/or the community in general?
 </section>
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>Adapting Ark to run independently of R would have required extracting the server and replacing its dependencies on the R runtime, which is what motivated the development of Arity.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main>
+</main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

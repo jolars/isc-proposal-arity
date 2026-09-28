@@ -62,22 +62,15 @@ Package knowledge
     choice and use Arity's existing disk cache. Indexes will record package versions
     and extraction methods.
 
-Validation and documentation
-
-:   I will test ten package workflows covering cross-file references, imports,
-    shared documentation, and nonstandard evaluation, and publish results and
-    guides.
-
-The maintainer of
-[r-documentation-rs](https://github.com/eitsupi/r-documentation-rs) and I are
-coordinating work to bring our code for reading R binary data and Rd
-documentation into that library, so other R tools can reuse it.
-
 For the pilot, I will extract metadata from unpacked [R-universe binary
 packages](https://docs.r-universe.dev/install/binaries.html), falling back on
 packages installed in continuous integration (CI). I will check metadata against
 the same package versions in R and use roxygen2 to check documentation behavior.
 Source packages and extracted data will retain version and license information.
+
+To make the extraction code reusable by other R tools, I am coordinating with
+the maintainer of [r-documentation-rs](https://github.com/eitsupi/r-documentation-rs)
+to bring our code for reading R binary data and Rd documentation into that library.
 
 Initial extraction checks in September 2026 found the required fields for every
 exported function in glue, withr, R6, and cli. For magrittr, coverage was 16 of
@@ -85,6 +78,12 @@ exported function in glue, withr, R6, and cli. For magrittr, coverage was 16 of
 coverage, magrittr would not meet the project's 80% threshold for inclusion in
 the 100-package target. The checks also found S3 methods incorrectly listed as
 exports.
+
+Validation and documentation
+
+:   I will test ten package workflows covering cross-file references, imports,
+    shared documentation, and nonstandard evaluation, and publish results and
+    guides.
 
 ### Minimum Viable Product
 

@@ -14,8 +14,8 @@ important because projects need to get up and running quickly.
 -->
 
 I will begin working on the first milestone (M1) in December 2026, after the
-grant agreement. I will pin versions of the ten evaluation packages, define their
-editing workflows, and record baseline diagnostics and response times.
+grant agreement. I will pin versions of the ten evaluation packages, define
+their editing workflows, and record baseline diagnostics and response times.
 
 I will track tasks and milestones in [Arity's public GitHub
 repository](https://github.com/jolars/arity). Monthly progress notes will record
@@ -27,8 +27,8 @@ During M1, I will fix the S3 export errors and test extraction of deprecation
 declarations. I will define the supported cases before the metadata publication
 milestone (M4).
 
-Before M4, five packages in the metadata pilot must pass the quality criteria listed
-under "Package knowledge" in [Definition of Done](#definition-of-done). A
+Before M4, five packages in the metadata pilot must pass the quality criteria
+listed under "Package knowledge" in [Definition of Done](#definition-of-done). A
 prototype using Arity's existing client must provide signatures and help without
 local installation for packages both inside and outside the existing bundle. If
 the pilot fails to meet these requirements within budget, I will agree on a
@@ -51,11 +51,11 @@ deliverables, estimated hours, and costs.
   | Milestone                        | Target date       | Deliverables                                                                                                                | Hours   | Cost (USD) |
   | :--------                        | :----------       | :-----------                                                                                                                | ----:   | ---------: |
   | M1: Baseline and pilot           | Jan 7, 2027       | Baseline, metadata prototype, consolidation plan, quality checks, regression cases                                          |      30 |      2,400 |
-  | M2: Documentation analysis       | Jan 19, 2027      | Correct handling of shared and inherited roxygen documentation and detection of undocumented parameters                     |      10 |        800 |
-  | M3: Navigation and safe renaming | Feb 6, 2027       | Consistent references and call hierarchy for quoted names, safe renaming including infix calls                              |      15 |      1,200 |
-  | M4: Reusable package metadata    | Feb 28, 2027      | Indexes for at least 100 CRAN packages meeting the quality criteria, documented schema, extraction pipeline, weekly updates |      20 |      1,600 |
+  | M2: Documentation analysis       | Jan 19, 2027      | Shared and inherited roxygen support, with checks for undocumented parameters                                               |      10 |        800 |
+  | M3: Navigation and safe renaming | Feb 6, 2027       | Consistent navigation for quoted names and safe renaming, including infix calls                                             |      15 |      1,200 |
+  | M4: Reusable package metadata    | Feb 28, 2027      | Indexes for at least 100 CRAN packages, documented schema, and extraction pipelines                                         |      20 |      1,600 |
   | M5: Package metadata in Arity    | Mar 25, 2027      | Completion, hover, signature help, deprecation diagnostics, bulk prefetch, shared offline cache for editor and CLI          |      20 |      1,600 |
-  | M6: Validation and release       | Apr 30, 2027      | Workflow validation, annotated comparison, guides, release, report, maintenance instructions                                |      30 |      2,400 |
+  | M6: Validation and release       | Apr 30, 2027      | Annotated workflow comparisons, release, report, and guides                                                                 |      30 |      2,400 |
   | **Total**                        |                   |                                                                                                                             | **125** | **10,000** |
 
   : Milestones for the project, with target dates, deliverables, estimated

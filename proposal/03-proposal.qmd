@@ -19,8 +19,19 @@ section.
 Include concrete actions you will take and estimated timeline.
 -->
 
-I will improve Arity's analysis of package code, extend its metadata for
-dependencies, and test these changes together in complete editing workflows.
+This project will help R developers understand and change package code from
+their editor without running R. I will improve Arity's handling of shared
+documentation, make references and call hierarchy consistent, and ensure that
+renaming either produces valid R syntax or is refused. Developers will also gain
+function signatures and help for dependencies they have not installed, making
+unfamiliar projects easier to explore.
+
+The work will produce a public metadata index for at least 100 CRAN packages,
+together with a documented format and extraction pipeline that other R tools can
+reuse. From December 2026 through April 2027, I will implement these
+improvements and test complete editing workflows on ten packages. Published
+examples and before-and-after results will show what developers can rely on and
+where limitations remain.
 
 ## Detail
 
@@ -39,80 +50,51 @@ What is the smallest thing you can build that delivers value to your users?
 
 Language-server reliability
 
-:   I will improve Arity's handling of shared and inherited roxygen
-    documentation. References, renaming, and call hierarchy will handle quoted
-    function names consistently. Renaming will produce valid R syntax, including
-    in infix calls, or Arity will refuse the operation.
+:   I will improve analysis of shared and inherited roxygen documentation,
+    navigation for quoted names, and renaming, including infix calls.
 
-Package knowledge for semantic analysis
+Package knowledge
 
-:   I will build and publish a new package metadata index covering at least 100
-    CRAN packages, with versioned data that other R tools can also use. The
-    index will contain exported names, symbol kinds, function signatures, help,
-    and explicit deprecation information. Arity will combine this metadata with
-    name resolution to provide completion, hover information, signature help,
-    and deprecation diagnostics without local package installation.
-
-    Downloads will remain an explicit user choice. Each index will record the
-    package version and extraction method.
+:   I will publish exported names, symbol kinds, signatures, help, and explicit
+    deprecation information for completion, hover, signature help, and
+    deprecation diagnostics without local installation. Downloads will remain an
+    explicit user choice; indexes will record package versions and extraction
+    methods.
 
 Validation and documentation
 
-:   I will test complete editing workflows on ten packages with cross-file
-    references, imports, shared documentation, and nonstandard evaluation.
+:   I will test ten package workflows covering cross-file references, imports,
+    shared documentation, and nonstandard evaluation, and publish results and
+    guides.
 
-### Architecture
+### Implementation
 
-<!--
-What does the high-level architecture look like?
--->
+Arity already extracts package metadata without running R and bundles export
+names for over 500 packages, refreshed weekly. I will extend its publishing
+pipeline and remote client to distribute richer metadata using the existing
+versioned indexes and disk cache. Local indexes will take precedence, and Arity
+will show the package version when using a remote index.
 
-Arity's metadata harvester already reads serialized R objects and
-installed-package help without running R. Its binary parsing and Rd decoding
-overlap with
-[r-documentation-rs](https://github.com/eitsupi/r-documentation-rs). I am
-currently coordinating with its maintainer on consolidating these readers in
-r-documentation-rs, reducing duplication and making improvements available to
-other R tools. Arity will continue to handle package discovery, export
-resolution, metadata indexing, caching, and editor integration.
-
-As of September 2026, Arity bundles export names for over 500 packages and has a
-workflow to refresh them weekly. The remote client already supports downloads,
-disk caching, and versioned indexes, but accepts only exported names. I will
-extend the publishing pipeline and remote client to provide the richer metadata.
-Local indexes will take precedence, and Arity will show the package version when
-it uses a remote index.
-
-### Assumptions
-
-<!--
-What assumptions are you making that, if proven false, would invalidate the project?
--->
-
-Static analysis cannot determine what every name refers to at runtime. Arity
-will refuse uncertain rename operations and withhold deprecation diagnostics
-when function resolution or the indexed deprecation status is uncertain. I will
-document unsupported cases. The publishing pipeline will initially target
-current package releases. The risk is that the index might describe a different
-version from a project's dependency. When Arity cannot establish that the
-versions match, deprecation findings will identify the indexed release and
-remain advisory.
-
-I will record missing fields and failed extractions, and older metadata will
-retain the version of the package it describes. Backfilling historical releases,
-selecting indexes from project lockfiles, argument-specific deprecations, and
-signatures that require running R are outside this project's scope.
-
-### External Dependencies
-
-<!--
-What external dependencies does the project have (e.g. libraries, services, other projects, etc.)?
--->
+I am coordinating with the maintainer of
+[r-documentation-rs](https://github.com/eitsupi/r-documentation-rs) to
+consolidate our overlapping binary and Rd readers there for reuse by other R
+tools.
 
 For the pilot, I will extract metadata from unpacked [R-universe binary
 packages](https://docs.r-universe.dev/install/binaries.html), falling back on
-packages installed in continuous integration (CI) when needed. I will check the
-complete export lists and samples of signatures and help against the same
-package versions in R, and use roxygen2 to check documentation behavior. The
-source packages and extracted data will retain their version and license
-information.
+packages installed in continuous integration (CI). I will check metadata against
+the same package versions in R and use roxygen2 to check documentation behavior.
+Source packages and extracted data will retain version and license information.
+
+### Risks and Scope
+
+Static analysis cannot resolve every name. Arity will refuse uncertain renames
+and withhold deprecation diagnostics when function resolution or the indexed
+deprecation status is uncertain. Indexes will initially cover current releases.
+When dependency versions cannot be matched, deprecation findings will identify
+the indexed release and remain advisory.
+
+I will document unsupported cases, missing fields, and failed extractions. Older
+metadata will retain the package version it describes. Historical releases,
+index selection from lockfiles, argument-specific deprecations, and signatures
+requiring R execution are outside scope.

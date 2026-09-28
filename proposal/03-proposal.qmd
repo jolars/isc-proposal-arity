@@ -79,6 +79,13 @@ packages installed in continuous integration (CI). I will check metadata against
 the same package versions in R and use roxygen2 to check documentation behavior.
 Source packages and extracted data will retain version and license information.
 
+Initial extraction checks in September 2026 found the required fields for every
+exported function in glue, withr, R6, and cli. For magrittr, coverage was 16 of
+42 functions, largely because primitive aliases lack formal arguments. At this
+coverage, magrittr would not meet the project's 80% threshold for inclusion in
+the 100-package target. The checks also found S3 methods incorrectly listed as
+exports.
+
 ### Minimum Viable Product
 
 <!--
@@ -102,3 +109,6 @@ I will document unsupported cases, missing fields, and failed extractions. Older
 metadata will retain the package version it describes. Historical releases,
 index selection from lockfiles, argument-specific deprecations, and signatures
 requiring R execution are outside scope.
+
+If full consolidation exceeds the available hours, I will retain the necessary
+parts of Arity's extractor and defer the remaining consolidation work.

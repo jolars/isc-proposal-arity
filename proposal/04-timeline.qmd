@@ -23,16 +23,12 @@ completed work, hours spent, risks, and any changes to the schedule. I will
 publish these notes in the repository and share them with the ISC, linking to
 tests, results, and releases as milestones are completed.
 
-Initial extraction checks in September 2026 found the required fields for every
-exported function in glue, withr, R6, and cli. For magrittr, coverage was 16 of
-42 functions, largely because primitive aliases lack formal arguments. The
-checks also found S3 methods incorrectly listed as exports. I will fix the S3
-export errors during M1, before publication. During M1, I will also test
-extraction of deprecation declarations and define the supported cases before M4.
-If full consolidation exceeds the available hours, I will retain the necessary
-parts of Arity's extractor and defer the remaining consolidation work.
+During M1, I will fix the S3 export errors and test extraction of deprecation
+declarations. I will define the supported cases before the metadata publication
+milestone (M4).
 
-Before M4, five pilot packages must pass the metadata quality criteria below. A
+Before M4, five pilot packages must pass the metadata quality criteria listed
+under "Package knowledge" in [Definition of Done](#definition-of-done). A
 prototype using Arity's existing client must provide signatures and help without
 local installation for packages both inside and outside the existing bundle. If
 the pilot fails to meet these requirements within budget, I will agree on a

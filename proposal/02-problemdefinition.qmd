@@ -17,23 +17,25 @@ It is important to cover:
 -->
 ```
 
-There are three language servers for R:
-[languageserver](https://github.com/REditorSupport/languageserver),
-[Ark](https://github.com/posit-dev/ark), and Arity. The R package languageserver
-runs in an R session, whereas Ark embeds its language server in an R kernel and
-powers R support in Positron. Arity, meanwhile, is a standalone language server
-that works without an R session or Jupyter kernel.[^1]
+Changing a function in an R package can affect its documentation and calls
+across several files. Developers need reliable checks and navigation to make
+these changes safely, but Arity still has gaps: it can misinterpret shared
+roxygen documentation, miss undocumented parameters, and handle references and
+call hierarchy inconsistently. Renaming can also produce invalid R syntax, for
+example when a function is used as an infix operator.
 
-Arity still has limitations that affect package development. It can, for
-instance, misinterpret shared roxygen documentation, miss undocumented
-parameters, and handle references and call hierarchy inconsistently. Renaming
-can also produce invalid R syntax, for example when a function is used as an
-infix operator.
+Exploring unfamiliar package code is also harder when its dependencies are not
+installed locally. Arity provides signatures and help for installed packages,
+but only exported names for others. Richer metadata would let developers inspect
+function signatures and documentation before installing dependencies and enable
+linting of deprecated and defunct functions.
 
-Arity also needs better support for dependencies that are not installed locally.
-It provides signatures and help for installed packages, but only exported names
-for others. Richer metadata would provide that assistance without installation
-and enable linting of deprecated and defunct functions.
+Arity is one of three language servers for R, alongside
+[languageserver](https://github.com/REditorSupport/languageserver) and
+[Ark](https://github.com/posit-dev/ark). The R package languageserver runs in an
+R session, whereas Ark embeds its language server in an R kernel and powers R
+support in Positron. Arity is a standalone language server that works without an
+R session or Jupyter kernel.[^1]
 
 [^1]: Adapting Ark to run independently of R would have required extracting the
     server and replacing its dependencies on the R runtime, which is what

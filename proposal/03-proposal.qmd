@@ -67,10 +67,10 @@ packages](https://docs.r-universe.dev/install/binaries.html), falling back on
 packages installed in continuous integration (CI). I will check metadata against
 the same package versions in R and use roxygen2 to check documentation behavior.
 Source packages and extracted data will retain version and license information.
-
 To make the extraction code reusable by other R tools, I am coordinating with
-the maintainer of [r-documentation-rs](https://github.com/eitsupi/r-documentation-rs)
-to bring our code for reading R binary data and Rd documentation into that library.
+the maintainer of
+[r-documentation-rs](https://github.com/eitsupi/r-documentation-rs) to
+consolidate our code for reading R binary data and Rd documentation.
 
 To count toward the 100-package target, an index must provide arguments,
 defaults, and help for at least 80% of exported functions after incorrect or

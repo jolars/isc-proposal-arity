@@ -29,9 +29,9 @@ unfamiliar projects easier to explore.
 The work will produce a public metadata index for at least 100 CRAN packages,
 together with a documented format and extraction pipeline that other R tools can
 reuse. From December 2026 through April 2027, I will implement these
-improvements and test complete editing workflows on ten packages. Published
-examples and before-and-after results will show what developers can rely on and
-where limitations remain.
+improvements and test complete editing workflows on ten evaluation packages.
+Published examples and before-and-after results will show what developers can
+rely on and where limitations remain.
 
 ## Detail
 
@@ -62,7 +62,7 @@ Package knowledge
     choice and use Arity's existing disk cache. Indexes will record package versions
     and extraction methods.
 
-For the pilot, I will extract metadata from unpacked [R-universe binary
+For the metadata pilot, I will extract metadata from unpacked [R-universe binary
 packages](https://docs.r-universe.dev/install/binaries.html), falling back on
 packages installed in continuous integration (CI). I will check metadata against
 the same package versions in R and use roxygen2 to check documentation behavior.
@@ -72,18 +72,19 @@ To make the extraction code reusable by other R tools, I am coordinating with
 the maintainer of [r-documentation-rs](https://github.com/eitsupi/r-documentation-rs)
 to bring our code for reading R binary data and Rd documentation into that library.
 
-Initial extraction checks in September 2026 found the required fields for every
-exported function in glue, withr, R6, and cli. For magrittr, coverage was 16 of
-42 functions, largely because primitive aliases lack formal arguments. At this
-coverage, magrittr would not meet the project's 80% threshold for inclusion in
-the 100-package target. The checks also found S3 methods incorrectly listed as
-exports.
+To count toward the 100-package target, an index must provide arguments,
+defaults, and help for at least 80% of exported functions after incorrect or
+uncertain fields are withheld. Initial checks in September 2026 found these
+fields for every exported function in glue, withr, R6, and cli. Coverage for
+magrittr was 16 of 42 functions, below the threshold, largely because primitive
+aliases lack formal arguments. The checks also found S3 methods incorrectly
+listed as exports.
 
 Validation and documentation
 
-:   I will test ten package workflows covering cross-file references, imports,
-    shared documentation, and nonstandard evaluation, and publish results and
-    guides.
+:   On the ten evaluation packages, I will test workflows covering cross-file
+    references, imports, shared documentation, and nonstandard evaluation, and
+    publish results and guides.
 
 ### Minimum Viable Product
 

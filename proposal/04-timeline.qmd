@@ -14,7 +14,7 @@ important because projects need to get up and running quickly.
 -->
 
 I will begin working on the first milestone (M1) in December 2026, after the
-grant agreement. I will pin versions of ten evaluation packages, define their
+grant agreement. I will pin versions of the ten evaluation packages, define their
 editing workflows, and record baseline diagnostics and response times.
 
 I will track tasks and milestones in [Arity's public GitHub
@@ -27,7 +27,7 @@ During M1, I will fix the S3 export errors and test extraction of deprecation
 declarations. I will define the supported cases before the metadata publication
 milestone (M4).
 
-Before M4, five pilot packages must pass the metadata quality criteria listed
+Before M4, five packages in the metadata pilot must pass the quality criteria listed
 under "Package knowledge" in [Definition of Done](#definition-of-done). A
 prototype using Arity's existing client must provide signatures and help without
 local installation for packages both inside and outside the existing bundle. If

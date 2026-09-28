@@ -12,7 +12,7 @@ What does success look like?
 -->
 
 The project will be complete when I have published a tagged Arity release and
-met the following criteria:
+met these criteria:
 
 Language-server reliability
 :   Tests show that Arity resolves shared documentation, reports undocumented

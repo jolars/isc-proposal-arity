@@ -26,19 +26,16 @@ Package knowledge
 
 :   Indexes for at least 100 CRAN packages are published, with a documented
     schema and weekly updates. Export lists must match R's results for the same
-    versions. I will compare a sample of extracted signatures and help text
-    against the same package versions in R and withhold fields found to be
-    incorrect or uncertain. After withholding incorrect or uncertain fields,
-    each qualifying index must provide arguments, defaults, and help for at
-    least 80% of exported functions. Missing fields will be reported.
-
-    Tests show completion details, hover information, and signature help without
-    local installation, including packages outside the bundle. They also verify
-    diagnostics for deprecated and defunct functions, covering supported
-    declarations, local shadowing, and advisory behavior when dependency versions
-    cannot be matched. The same tests pass offline after prefetch. For the supported
-    deprecation cases, editor and command-line checks report the same diagnostics
-    when given identical source, configuration, and cached metadata.
+    versions. After withholding incorrect or uncertain fields, each qualifying
+    index must provide arguments, defaults, and help for at least 80% of
+    exported functions. Tests show completion details, hover information, and
+    signature help without local installation, including packages outside the
+    bundle. They also verify diagnostics for deprecated and defunct functions,
+    covering supported declarations, local shadowing, and advisory behavior when
+    dependency versions cannot be matched. The same tests pass offline after
+    prefetch. For the supported deprecation cases, editor and command-line
+    checks report the same diagnostics when given identical source,
+    configuration, and cached metadata.
 
 Validation and documentation
 :   I have published workflows and before-and-after results for the ten

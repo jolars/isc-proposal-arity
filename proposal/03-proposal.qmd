@@ -51,11 +51,16 @@ Language-server reliability
 
 Package knowledge
 
-:   I will publish exported names, symbol kinds, signatures, help, and explicit
-    deprecation information for completion, hover, signature help, and
-    deprecation diagnostics without local installation. Downloads will remain an
-    explicit user choice; indexes will record package versions and extraction
-    methods.
+:   Arity already extracts metadata without running R and bundles exported names
+    for over 500 packages, refreshed weekly. I will extend its publishing
+    pipeline and remote client to provide richer metadata for at least 100 CRAN
+    packages, adding symbol kinds, signatures, help, and explicit deprecation
+    information.
+
+    These indexes will support completion, hover, signature help, and deprecation
+    diagnostics without local installation. Downloads will remain an explicit user
+    choice and use Arity's existing disk cache. Indexes will record package versions
+    and extraction methods.
 
 Validation and documentation
 
@@ -63,15 +68,10 @@ Validation and documentation
     shared documentation, and nonstandard evaluation, and publish results and
     guides.
 
-Arity already extracts package metadata without running R and bundles export
-names for over 500 packages, refreshed weekly. I will extend its publishing
-pipeline and remote client to distribute richer metadata using the existing
-versioned indexes and disk cache.
-
-I am also coordinating with the maintainer of
-[r-documentation-rs](https://github.com/eitsupi/r-documentation-rs) to
-consolidate our overlapping binary and Rd readers there for reuse by other R
-tools.
+The maintainer of
+[r-documentation-rs](https://github.com/eitsupi/r-documentation-rs) and I are
+coordinating work to bring our code for reading R binary data and Rd
+documentation into that library, so other R tools can reuse it.
 
 For the pilot, I will extract metadata from unpacked [R-universe binary
 packages](https://docs.r-universe.dev/install/binaries.html), falling back on
@@ -85,10 +85,10 @@ Source packages and extracted data will retain version and license information.
 What is the smallest thing you can build that delivers value to your users?
 -->
 
-The smallest useful release is the documentation work in M2: correct handling of
-shared and inherited roxygen documentation and detection of undocumented
-parameters. These fixes give package authors more reliable documentation checks
-and can be released independently of the navigation and metadata work.
+The smallest useful release will correctly handle shared and inherited roxygen
+documentation and detect undocumented parameters. These fixes give package
+authors more reliable documentation checks and can be released independently of
+the navigation and metadata work.
 
 ### Risks and Scope
 

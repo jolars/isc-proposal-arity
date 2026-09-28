@@ -42,17 +42,6 @@ against the problem.
 Depending on project type the detail section should include:
 -->
 
-### Minimum Viable Product
-
-<!--
-What is the smallest thing you can build that delivers value to your users?
--->
-
-The smallest useful release is the documentation work in M2: correct handling of
-shared and inherited roxygen documentation and detection of undocumented
-parameters. These fixes give package authors more reliable documentation checks
-and can be released independently of the navigation and metadata work.
-
 The full project covers three areas:
 
 Language-server reliability
@@ -89,6 +78,17 @@ packages](https://docs.r-universe.dev/install/binaries.html), falling back on
 packages installed in continuous integration (CI). I will check metadata against
 the same package versions in R and use roxygen2 to check documentation behavior.
 Source packages and extracted data will retain version and license information.
+
+### Minimum Viable Product
+
+<!--
+What is the smallest thing you can build that delivers value to your users?
+-->
+
+The smallest useful release is the documentation work in M2: correct handling of
+shared and inherited roxygen documentation and detection of undocumented
+parameters. These fixes give package authors more reliable documentation checks
+and can be released independently of the navigation and metadata work.
 
 ### Risks and Scope
 

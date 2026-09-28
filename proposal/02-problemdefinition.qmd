@@ -35,8 +35,4 @@ Arity is one of three language servers for R, alongside
 [Ark](https://github.com/posit-dev/ark). The R package languageserver runs in an
 R session, whereas Ark embeds its language server in an R kernel and powers R
 support in Positron. Arity is a standalone language server that works without an
-R session or Jupyter kernel.[^1]
-
-[^1]: Adapting Ark to run independently of R would have required extracting the
-    server and replacing its dependencies on the R runtime, which is what
-    motivated the development of Arity.
+R session or Jupyter kernel.
